@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jhaishna Technologies Pvt.Ltd</title>
+    <head>
+        <!-- Favicon -->
+        <link rel="icon" type="image/x-icon" href="../static/Images/logo.png">
+      
+        <!-- Font Awesome (CDN is fine) -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+      
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="../static/css/about.css">
+        
+        <script src="../static/js/about.js" defer></script>
+        <script src="../static/js/header-footer.js"></script>
+        <link rel="stylesheet" href="../static/css/header-footer.css">
+
+      </head>
+      <body>
+         <!-- Header Section -->
+<header class="global-header">
+        <nav class="navbar" id="navbar">
+            <div class = "logoo">
+                <a href="../templates/home.html" class="logo">
+                <img src="../static/Images/logo.png" alt="Jhaishna Technology Logo" class="logo-img">
+                Jhaishna<span class="logo-sub">Technologies</span>
+                </a>
+            </div>
+            <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+            <ul class="nav-links">
+                <li><a href="../templates/home.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="{{ url_for('products') }}" class="dropbtn">Products</a>
+                    <div class="dropdown-content">
+                        <button class="close-dropdown"><i class="fas fa-times"></i></button>
+                        <div class="dropdown-container">
+                            <div class="dropdown-section left">
+                                <h3>Hardware & Software</h3>
+                                <a href="../templates/Productsf/software&hardware/HRMS.html">HRMS</a>
+                                <a href="../templates/Productsf/software&hardware/MXCloud_AI.html">MXCloud</a>
+                                <a href="../templates/Productsf/software&hardware/LoanManagementSystem.html">Loan Management System</a>
+                                <a href="../templates/Productsf/software&hardware/Fiber_optics.html">Fiber Optics</a>
+                                <a href="../templates/Productsf/software&hardware/taskmanagement.html">Task Management</a>
+                            </div>
+                            <div class="dropdown-section right">
+    <h3>Digital Services</h3>
+    <a href="../templates/Productsf/digitals/OracleCommunicationConsulting.html">Oracle Communication Consulting</a>
+    <a href="../templates/Productsf/digitals/TailoredBilingPlatform.html">Tailored Billing Platform</a>
+    <a href="../templates/Productsf/digitals/TailoredCRM.html">Tailored CRM System</a>
+    <a href="../templates/Productsf/digitals/CloudMigration.html">Cloud Migration</a>
+    <a href="../templates/Productsf/digitals/StaffAugmentation.html">Staff Automation</a>
+    <a href="../templates/Productsf/digitals/DigitalBusinessTransformation.html">Digital Business</a>
+</div>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="../templates/career.html">Careers</a></li>
+                <li><a href="../templates/blog.html">Blog</a></li>
+                <li><a href="../templates/about.html">About Us</a></li>
+                <li><a href="../templates/contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+</body>
+</html>
+
+
+    <!-- Hero Section with Video Background -->3
+    <section class="hero" id="home">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Empowering Businesses <span> With Innovative Solutions</span></h1>
+                <p style="color: #333;">We create innovative solutions for the future and emerge new technologies to transform the world. Transforming Growth Through Technology and AI</p>
+                <div class="btn-group">
+                    <a href="../templates/blog.html" class="btn">Explore Our Work</a>
+                    <a href="../templates/contact.html" class="btn outline">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section (Achievements) -->
+    <section class="features" id="features">        
+        <h2 class="section-title fade-in-up">Our Achievements</h2>
+
+        <div class="features-container">
+            <div class="feature-card fade-in-up">
+                <div class="feature-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <h3 class="feature-title">15+ Years Experience</h3>
+                <p class="feature-desc">Delivering Industry Excellence</p>
+            </div>
+
+            <div class="feature-card fade-in-up" style="transition-delay: 0.2s;">
+                <div class="feature-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <h3 class="feature-title">Global Reach</h3>
+                <p class="feature-desc">Strategic Partnerships & Clients</p>
+            </div>
+
+            <div class="feature-card fade-in-up" style="transition-delay: 0.4s;">
+                <div class="feature-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h3 class="feature-title">2024 Fastest Growing Company Award</h3>
+                <p class="feature-desc">Proven track record providing cost-effective solutions</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <div class="about-image fade-in-up">
+                <!-- Replace with your actual image path -->
+                <img src="../static/Images/AboutusImage.jpeg" alt="About Jhainsha Technology">
+            </div>
+
+            <div class="about-text">
+                <h2 class="about-title fade-in-up">Who We Are</h2>
+                <p class="about-desc fade-in-up" style="transition-delay: 0.2s;">
+                    Jhaishna Technology Pvt. Ltd. is at the forefront of technological innovation. We are passionate about creating solutions that shape the future and drive digital transformation across industries.
+                </p>
+                <p class="about-desc fade-in-up" style="transition-delay: 0.3s;">
+                    Jhaishna Technologies Private Limited is a leading software development and Oracle consulting company based in Andhra Pradesh, India, with operations over India, Hong Kong, and the United States.
+                    Our commitment to optimizing clients' business operations efficiency has positioned us as a trusted partner for organizations striving to enhance their IT services and achieve sustainable business growth. With tailored IT advisory services and engagement models, we empower businesses to achieve their goals and make a positive impact on the organizations we work with, thus having us win the Fastest Growing Indian Company Leadership Award.
+                </p>
+                <a href="../templates/contact.html" class="btn fade-in-up" style="transition-delay: 0.4s;">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision, Mission, Values Section -->
+    <section class="core-values" id="core-values">
+        
+        <h2 class="section-title fade-in-up">Our Core Principles</h2>
+        <div class="values-container">
+            <div class="value-item fade-in-up">
+                <h3><i class="fas fa-eye"></i> Vision</h3>
+                <p>
+                    To be a globally recognized leader in technology solutions, driving innovation and digital transformation for businesses worldwide.
+                </p>
+            </div>
+            <div class="value-item fade-in-up" style="transition-delay: 0.2s;">
+                <h3><i class="fas fa-bullseye"></i> Mission</h3>
+                <p>
+                    To empower our clients with cutting-edge technology, expert consulting, and tailored solutions that enhance efficiency, foster growth, and deliver measurable results.
+                </p>
+            </div>
+            <div class="value-item fade-in-up" style="transition-delay: 0.4s;">
+                <h3><i class="fas fa-gem"></i> Values</h3>
+                <p>
+                    Innovation, Integrity, Client-Centricity, Collaboration, Excellence. We are committed to upholding these principles in every project and interaction.
+                </p>
+            </div>
+        </div>
+    </section>
+      
+<!-- Footer Section -->
+<footer class="global-footer">
+    <div class="footer-content">
+        <div class="footer-logo">
+            <div class="footer-logo-container">
+                <img src="../static/Images/logo.png" alt="Jhainsha Technology Logo" class="footer-logo-img">
+                <span>Jhaishna Technologies</span>
+            </div>
+            <p>Innovative solutions for a digital world</p>
+            <div class="social-links">
+                <a href="#" class="social-icon glow-effect"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon glow-effect"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon glow-effect"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-icon glow-effect"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-column">
+            <h3>Quick Links</h3>    
+            <ul>
+                <li><a href="../templates/home.html">Home</a></li>
+                <li><a href="#services" class="glow-effect">Services</a></li>
+                <li><a href="#clients" class="glow-effect">Clients</a></li>
+                <li><a href="../templates/contact.html" class="glow-effect">Contact Us</a></li>
+                <li><a href="../templates/career.html" class="glow-effect">Careers</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Contact Us</h3>
+            <p class="glow-effect">Email: info@jhainsha.com</p>
+            <p class="glow-effect">Phone: +91 866 123 4567</p>
+            <p class="glow-effect">Global Headquarters: Tech Park, MG Road, Vijayawada, India</p>
+            <div class="newsletter-form">
+                <input type="email" placeholder="Enter your email" class="glow-effect">
+                <button class="subscribe-button glow-effect">Subscribe</button>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2025 Jhainsha Technologies. All rights reserved.</p>
+    </div>
+</footer>
+
+    <!-- Link to your external JavaScript file -->
+    <script src="../static/js/about.js"></script> 
+</body>
+</html>

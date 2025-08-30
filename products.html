@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jhainsha Technologies Pvt.Ltd</title>
+    <head>
+        <!-- Font Awesome (CDN is fine) -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        
+        <!-- Favicon (Image) -->
+        <link rel="icon" type="image/x-icon" href="../static/Images/logo.png">
+        
+        <!-- Custom CSS (Using url_for for Flask's static folder) -->
+        <link rel="stylesheet" href="../static/css/products.css"/>
+
+        <script src="../static/js/products.js" defer></script>
+        <script src="../static/js/header-footer.js"></script>
+        <link rel="stylesheet" href="../static/css/header-footer.css">
+    </head>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jhainsha Technologies</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!-- Header Section -->
+<header class="global-header">
+        <nav class="navbar" id="navbar">
+            <div class = "logoo">
+                <a href="../templates/home.html" class="logo">
+                <img src="../static/Images/logo.png" alt="Jhaishna Technology Logo" class="logo-img">
+                Jhaishna<span class="logo-sub">Technologies</span>
+                </a>
+            </div>
+            <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+            <ul class="nav-links">
+                <li><a href="../templates/home.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="../templates/Productsf/" class="dropbtn">Products</a>
+                    <div class="dropdown-content">
+                        <button class="close-dropdown"><i class="fas fa-times"></i></button>
+                        <div class="dropdown-container">
+                            <div class="dropdown-section left">
+                                <h3>Hardware & Software</h3>
+                                <a href="../templates/Productsf/software&hardware/HRMS.html">HRMS</a>
+                                <a href="../templates/Productsf/software&hardware/MXCloud_AI.html">MXCloud</a>
+                                <a href="../templates/Productsf/software&hardware/LoanManagementSystem.html">Loan Management System</a>
+                                <a href="../templates/Productsf/software&hardware/Fiber_optics.html">Fiber Optics</a>
+                                <a href="../templates/Productsf/software&hardware/taskmanagement.html">Task Management</a>
+                            </div>
+                            <div class="dropdown-section right">
+    <h3>Digital Services</h3>
+    <a href="../templates/Productsf/digitals/OracleCommunicationConsulting.html">Oracle Communication Consulting</a>
+    <a href="../templates/Productsf/digitals/TailoredBilingPlatform.html">Tailored Billing Platform</a>
+    <a href="../templates/Productsf/digitals/TailoredCRM.html">Tailored CRM System</a>
+    <a href="../templates/Productsf/digitals/CloudMigration.html">Cloud Migration</a>
+    <a href="../templates/Productsf/digitals/StaffAugmentation.html">Staff Automation</a>
+    <a href="../templates/Productsf/digitals/DigitalBusinessTransformation.html">Digital Business</a>
+</div>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="../templates/career.html">Careers</a></li>
+                <li><a href="../templates/blog.html">Blog</a></li>
+                <li><a href="../templates/about.html">About Us</a></li>
+                <li><a href="../templates/contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<!-- Hero Section -->
+<section class="hero">
+    <img class="bg-image" src="../static/Images/InnvotiveSolutions.png" alt="Background Image">
+    <div class="hero-content">
+        <h1>Our <span>Innovative</span> Solutions</h1>
+        <p>Discover our cutting-edge products designed for the future</p>
+        <button class="btn">Learn More</button>
+    </div>
+    <div class="overlay"></div>
+</section>
+
+<!-- Products Section -->
+<section class="products">
+    <h2 class="section-title">Our Products</h2>
+
+    <!-- HRMS -->
+    <div class="product-container" data-product="1">
+        <div class="product-heading"><h3 class="product-title">HRMS</h3></div>
+        <div class="product-details">
+            <div class="product-content">
+                <h4>Human Resource Management System</h4>
+                <p>Simplify HR operations with an all-in-one platform for payroll, attendance, performance, and employee lifecycle management.</p>
+                <ul class="product-features">
+                    <li>Automated payroll processing</li>
+                    <li>Leave and attendance tracking</li>
+                    <li>Performance and appraisal management</li>
+                </ul>
+                <a href="{{ url_for('Productsf', product='HRMS') }}">Explore HRMS</a>
+            </div>
+            <video class="product-video" loop muted>
+                <source src="{{ url_for('static', filename='videos/HRMS.mp4') }}" type="video/mp4">
+            </video>
+            <div class="product-overlay"></div>
+        </div>
+    </div>
+
+    <!-- MXCloud -->
+    <div class="product-container" data-product="2">
+        <div class="product-heading"><h3 class="product-title">MXCloud</h3></div>
+        <div class="product-details">
+            <div class="product-content">
+                <h4>Cloud Infrastructure Platform</h4>
+                <p>MXCloud offers reliable, scalable, and secure cloud hosting with integrated tools for developers and enterprises.</p>
+                <ul class="product-features">
+                    <li>Auto-scaling and load balancing</li>
+                    <li>Secure container orchestration</li>
+                    <li>Real-time resource monitoring</li>
+                </ul>
+                <a href="../static/js/MXCloud_AI.js">Discover MXCloud</a>
+            </div>
+            <video class="product-video" loop muted>
+                <source src="{{ url_for('static', filename='videos/CloudMX.mp4') }}" type="video/mp4">
+            </video>
+            <div class="product-overlay"></div>
+        </div>
+    </div>
+
+    <!-- Loan Management System -->
+    <div class="product-container" data-product="3">
+        <div class="product-heading"><h3 class="product-title">Loan Management System</h3></div>
+        <div class="product-details">
+            <div class="product-content">
+                <h4>Complete Lending Lifecycle Solution</h4>
+                <p>Automate your loan processing with end-to-end features for onboarding, approval, disbursal, and repayment tracking.</p>
+                <ul class="product-features">
+                    <li>Automated credit checks</li>
+                    <li>Custom loan product creation</li>
+                    <li>Integrated EMI calculators</li>
+                </ul>
+                <a href="{{ url_for('Productsf', product='LoanManagementSystem') }}">Try Loan Management</a>
+            </div>
+            <video class="product-video" loop muted>
+                <source src="{{ url_for('static', filename='videos/LMS.mp4') }}" type="video/mp4">
+            </video>
+            <div class="product-overlay"></div>
+        </div>
+    </div>
+
+    <!-- Fiber Optics -->
+    <div class="product-container" data-product="4">
+        <div class="product-heading"><h3 class="product-title">Fiber Optics</h3></div>
+        <div class="product-details">
+            <div class="product-content">
+                <h4>Network Design & Monitoring Platform</h4>
+                <p>Plan, deploy, and manage high-speed fiber optic networks with real-time diagnostics and fault detection tools.</p>
+                <ul class="product-features">
+                    <li>GIS-based network planning</li>
+                    <li>Fault localization and alerts</li>
+                    <li>Bandwidth utilization monitoring</li>
+                </ul>
+                <a href="{{ url_for('Productsf', product='Fiber_optics') }}">see Fiber Optics</a>
+            </div>
+            <video class="product-video" loop muted>
+                <source src="{{ url_for('static', filename='videos/FiberOptics.mp4') }}" type="video/mp4">
+            </video>
+            <div class="product-overlay"></div>
+        </div>
+    </div>
+
+    <!-- E-Invoicing -->
+    <div class="product-container" data-product="5">
+        <div class="product-heading"><h3 class="product-title">E-Invoicing Software</h3></div>
+        <div class="product-details">
+            <div class="product-content">
+                <h4>Digital Invoice Management System</h4>
+                <p>Generate, send, and track invoices effortlessly with real-time GST compliance and integration with ERP platforms.</p>
+                <ul class="product-features">
+                    <li>GST-compliant invoice generation</li>
+                    <li>Auto-reminders and payment tracking</li>
+                    <li>ERP and accounting software integration</li>
+                </ul>
+                <a href="{{ url_for('Productsf', product='E-InvoicingSoftware') }}"> Explore E-Invoicing</a>
+            </div>
+            <video class="product-video" loop muted>
+                <source src="{{ url_for('static', filename='videos/Invoice.mp4') }}" type="video/mp4">
+            </video>
+            <div class="product-overlay"></div>
+        </div>
+    </div>
+
+    <!-- Task Management -->
+    <div class="product-container" data-product="6">
+        <div class="product-heading"><h3 class="product-title">Task Management System</h3></div>
+        <div class="product-details">
+            <div class="product-content">
+                <h4>Productivity & Collaboration Tool</h4>
+                <p>Organize your projects and tasks with a collaborative platform designed for teams to assign, track, and deliver work efficiently.</p>
+                <ul class="product-features">
+                    <li>Drag-and-drop task boards</li>
+                    <li>Team chat and file sharing</li>
+                    <li>Progress tracking and reporting</li>
+                </ul>
+                <a href="{{ url_for('Productsf', product='TaskManagement') }}">Task Management</a>
+            </div>
+            <video class="product-video" loop muted>
+                <source src="{{ url_for('static', filename='videos/TaskManagment.mp4') }}" type="video/mp4">
+            </video>
+            <div class="product-overlay"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer Section -->
+<footer class="global-footer">
+    <div class="footer-content">
+        <div class="footer-logo">
+            <div class="footer-logo-container">
+                <img src="../static/Images/logo.png" alt="Jhainsha Technology Logo" class="footer-logo-img">
+                <span>Jhaishna Technologies</span>
+            </div>
+            <p>Innovative solutions for a digital world</p>
+            <div class="social-links">
+                <a href="#" class="social-icon glow-effect"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon glow-effect"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon glow-effect"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-icon glow-effect"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-column">
+            <h3>Quick Links</h3>    
+            <ul>
+                <li><a href="../templates/home.html">Home</a></li>
+                <li><a href="#services" class="glow-effect">Services</a></li>
+                <li><a href="#clients" class="glow-effect">Clients</a></li>
+                <li><a href="../templates/contact.html" class="glow-effect">Contact Us</a></li>
+                <li><a href="../templates/career.html" class="glow-effect">Careers</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Contact Us</h3>
+            <p class="glow-effect">Email: info@jhainsha.com</p>
+            <p class="glow-effect">Phone: +91 866 123 4567</p>
+            <p class="glow-effect">Global Headquarters: Tech Park, MG Road, Vijayawada, India</p>
+            <div class="newsletter-form">
+                <input type="email" placeholder="Enter your email" class="glow-effect">
+                <button class="subscribe-button glow-effect">Subscribe</button>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2025 Jhainsha Technologies. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>

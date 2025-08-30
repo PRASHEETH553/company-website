@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jhaishna Technologies</title>
+    <!-- Leaflet CSS (CDN is fine) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  
+    <!-- Font Awesome (CDN is fine) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+    <!-- AOS Animation Library (CDN is fine) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/header-footer.css">
+    <script src="../static/js/header-footer.js"></script>
+  </head>
+  
+<body>
+  <!-- Navigation Bar -->
+   <!-- Header Section -->
+  <header class="global-header">
+        <nav class="navbar" id="navbar">
+            <div class = "logoo">
+                <a href="../templates/home.html" class="logo">
+                <img src="../static/Images/logo.png" alt="Jhaishna Technology Logo" class="logo-img">
+                Jhaishna<span class="logo-sub">Technologies</span>
+                </a>
+            </div>
+            <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+            <ul class="nav-links">
+                <li><a href="../templates/home.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="../templates/Productsf/" class="dropbtn">Products</a>
+                    <div class="dropdown-content">
+                        <button class="close-dropdown"><i class="fas fa-times"></i></button>
+                        <div class="dropdown-container">
+                            <div class="dropdown-section left">
+                                <h3>Hardware & Software</h3>
+                                <a href="../templates/Productsf/software&hardware/HRMS.html">HRMS</a>
+                                <a href="../templates/Productsf/software&hardware/MXCloud_AI.html">MXCloud</a>
+                                <a href="../templates/Productsf/software&hardware/LoanManagementSystem.html">Loan Management System</a>
+                                <a href="../templates/Productsf/software&hardware/Fiber_optics.html">Fiber Optics</a>
+                                <a href="../templates/Productsf/software&hardware/taskmanagement.html">Task Management</a>
+                            </div>
+                            <div class="dropdown-section right">
+    <h3>Digital Services</h3>
+    <a href="../templates/Productsf/digitals/OracleCommunicationConsulting.html">Oracle Communication Consulting</a>
+    <a href="../templates/Productsf/digitals/TailoredBilingPlatform.html">Tailored Billing Platform</a>
+    <a href="../templates/Productsf/digitals/TailoredCRM.html">Tailored CRM System</a>
+    <a href="../templates/Productsf/digitals/CloudMigration.html">Cloud Migration</a>
+    <a href="../templates/Productsf/digitals/StaffAugmentation.html">Staff Automation</a>
+    <a href="../templates/Productsf/digitals/DigitalBusinessTransformation.html">Digital Business</a>
+</div>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="../templates/career.html">Careers</a></li>
+                <li><a href="../templates/blog.html">Blog</a></li>
+                <li><a href="../templates/about.html">About Us</a></li>
+                <li><a href="../templates/contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+  <!-- Hero Section with 3D Globe -->
+  <section id="hero">
+    <div class="hero-content">
+      <div class="hero-text" data-aos="fade-right" data-aos-duration="1000">
+        <h1>Global <span class="highlight">Innovation</span></h1>
+        <h2>Connecting the world through technology</h2>
+        <p>Pioneering digital transformation across continents with cutting-edge solutions</p>
+        <div class="cta-buttons">
+          <a href="#contact" class="btn btn-primary">Get Started</a>
+          <a href="#about" class="btn btn-secondary">Learn More</a>
+        </div>
+      </div>
+      
+      <div class="globe-container">
+        <div class="globe-wrapper">
+          <div id="globe-map"></div>
+        </div>
+      </div>
+      
+      <div class="hero-media" data-aos="fade-left" data-aos-duration="1000">
+        <div class="media-card">
+          <div class="media-box video-card">
+            <div class="play-icon"><i class="fas fa-play"></i></div>
+            <div class="video-thumbnail" style="background-image: url('/api/placeholder/400/250')"></div>
+            <h3>Innovation Story</h3>
+            <p>See how we're changing the tech landscape</p>
+          </div>
+          
+          <div class="media-box stats-card">
+            <div class="stat">
+              <span class="counter" data-target="12">0</span>
+              <span>Years</span>
+            </div>
+            <div class="stat">
+              <span class="counter" data-target="4">0</span>
+              <span>Countries</span>
+            </div>
+            <div class="stat">
+              <span class="counter" data-target="250">0</span>
+              <span>Projects</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="scroll-indicator">
+      <div class="mouse">
+        <div class="scroll"></div>
+      </div>
+      <p>Scroll to explore</p>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <h2>About <span class="highlight">Us</span></h2>
+        <p class="section-subhead">Pioneering Excellence in Technology</p>
+      </div>
+      
+      <div class="about-content">
+        <div class="about-text" data-aos="fade-right">
+          <p>Jhaishna Technologies is a global leader in innovative technological solutions, with a presence spanning across continents. Founded with a vision to transform digital landscapes, we combine cutting-edge expertise with strategic insights to deliver unparalleled value to our clients worldwide.</p>
+          
+          <p>Our team of experts specializes in advanced software development, AI solutions, cloud infrastructure, and digital transformation initiatives that drive businesses forward in the rapidly evolving tech ecosystem.</p>
+          
+          <div class="about-features">
+            <div class="feature" data-aos="zoom-in" data-aos-delay="100">
+              <div class="feature-icon"><i class="fas fa-rocket"></i></div>
+              <h3>Innovation First</h3>
+              <p>Pioneering solutions that reshape industries</p>
+            </div>
+            
+            <div class="feature" data-aos="zoom-in" data-aos-delay="200">
+              <div class="feature-icon"><i class="fas fa-globe"></i></div>
+              <h3>Global Presence</h3>
+              <p>Strategic locations across major tech hubs</p>
+            </div>
+            
+            <div class="feature" data-aos="zoom-in" data-aos-delay="300">
+              <div class="feature-icon"><i class="fas fa-users"></i></div>
+              <h3>Expert Teams</h3>
+              <p>World-class talent driving excellence</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="about-image" data-aos="fade-left">
+          <div class="image-stack">
+            <div class="image-overlay"></div>
+            <img src="../static/Images/logo.png" alt="Jhaishna Technologies Team" class="main-image">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3"></div>
+            <div class="tech-icons">
+              <span><i class="fab fa-react"></i></span>
+              <span><i class="fab fa-python"></i></span>
+              <span><i class="fab fa-js"></i></span>
+              <span><i class="fab fa-aws"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Branches Section -->
+  <section id="branches" class="section">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <h2>Our <span class="highlight">Branches</span></h2>
+        <p class="section-subhead">Global Network of Innovation Centers</p>
+      </div>
+      
+      <div class="branches-grid">
+        <div class="branch-card" data-aos="flip-left" data-aos-delay="100">
+          <div class="branch-image" style="background-image: url('/api/placeholder/400/300')">
+            <div class="branch-overlay"></div>
+            <div class="branch-location">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Vijayawada, India</span>
+            </div>
+          </div>
+          <div class="branch-content">
+            <h3>Vijayawada Headquarters</h3>
+            <p>Our main innovation center and global headquarters</p>
+            <div class="branch-details">
+              <div class="branch-detail"><i class="fas fa-users"></i> 200+ Staff</div>
+              <div class="branch-detail"><i class="fas fa-calendar-alt"></i> Est. 2010</div>
+            </div>
+            <a href="#" class="branch-link">Learn More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        
+        <div class="branch-card" data-aos="flip-left" data-aos-delay="200">
+          <div class="branch-image" style="background-image: url('/api/placeholder/400/300')">
+            <div class="branch-overlay"></div>
+            <div class="branch-location">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Mumbai, India</span>
+            </div>
+          </div>
+          <div class="branch-content">
+            <h3>Mumbai Tech Center</h3>
+            <p>Financial technology and AI research hub</p>
+            <div class="branch-details">
+              <div class="branch-detail"><i class="fas fa-users"></i> 150+ Staff</div>
+              <div class="branch-detail"><i class="fas fa-calendar-alt"></i> Est. 2013</div>
+            </div>
+            <a href="#" class="branch-link">Learn More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        
+        <div class="branch-card" data-aos="flip-left" data-aos-delay="300">
+          <div class="branch-image" style="background-image: url('/api/placeholder/400/300')">
+            <div class="branch-overlay"></div>
+            <div class="branch-location">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Hong Kong</span>
+            </div>
+          </div>
+          <div class="branch-content">
+            <h3>Hong Kong Innovation Lab</h3>
+            <p>APAC operations and emerging technology research</p>
+            <div class="branch-details">
+              <div class="branch-detail"><i class="fas fa-users"></i> 100+ Staff</div>
+              <div class="branch-detail"><i class="fas fa-calendar-alt"></i> Est. 2016</div>
+            </div>
+            <a href="#" class="branch-link">Learn More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        
+        <div class="branch-card" data-aos="flip-left" data-aos-delay="400">
+          <div class="branch-image" style="background-image: url('/api/placeholder/400/300')">
+            <div class="branch-overlay"></div>
+            <div class="branch-location">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>New York, United States</span>
+            </div>
+          </div>
+          <div class="branch-content">
+            <h3>New York Development Center</h3>
+            <p>North American headquarters and client services</p>
+            <div class="branch-details">
+              <div class="branch-detail"><i class="fas fa-users"></i> 120+ Staff</div>
+              <div class="branch-detail"><i class="fas fa-calendar-alt"></i> Est. 2018</div>
+            </div>
+            <a href="#" class="branch-link">Learn More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="section">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <h2>Our <span class="highlight">Services</span></h2>
+        <p class="section-subhead">Comprehensive Technology Solutions</p>
+      </div>
+      
+      <div class="services-wrapper">
+        <div class="services-list">
+          <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-icon">
+              <i class="fas fa-code"></i>
+            </div>
+            <div class="service-content">
+              <h3>Custom Software Development</h3>
+              <p>Bespoke software solutions tailored to your business needs, built with cutting-edge technologies and methodologies.</p>
+            </div>
+            <div class="service-hover">
+              <div class="service-details">
+                <ul>
+                  <li>Enterprise Applications</li>
+                  <li>Mobile Development</li>
+                  <li>Web Applications</li>
+                  <li>API Integration</li>
+                </ul>
+                <a href="#" class="btn btn-outline">Learn More</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-icon">
+              <i class="fas fa-robot"></i>
+            </div>
+            <div class="service-content">
+              <h3>AI & Machine Learning</h3>
+              <p>Intelligent solutions leveraging advanced AI and machine learning algorithms to drive business growth.</p>
+            </div>
+            <div class="service-hover">
+              <div class="service-details">
+                <ul>
+                  <li>Predictive Analytics</li>
+                  <li>Computer Vision</li>
+                  <li>Natural Language Processing</li>
+                  <li>Deep Learning Models</li>
+                </ul>
+                <a href="#" class="btn btn-outline">Learn More</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-icon">
+              <i class="fas fa-cloud"></i>
+            </div>
+            <div class="service-content">
+              <h3>Cloud Solutions</h3>
+              <p>Comprehensive cloud infrastructure services to optimize performance, security, and scalability.</p>
+            </div>
+            <div class="service-hover">
+              <div class="service-details">
+                <ul>
+                  <li>Cloud Migration</li>
+                  <li>DevOps Implementation</li>
+                  <li>Serverless Architecture</li>
+                  <li>Multi-Cloud Strategy</li>
+                </ul>
+                <a href="#" class="btn btn-outline">Learn More</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="service-content">
+              <h3>Cybersecurity</h3>
+              <p>Advanced security solutions to protect your digital assets and infrastructure from evolving threats.</p>
+            </div>
+            <div class="service-hover">
+              <div class="service-details">
+                <ul>
+                  <li>Security Audits</li>
+                  <li>Penetration Testing</li>
+                  <li>Threat Intelligence</li>
+                  <li>Compliance Solutions</li>
+                </ul>
+                <a href="#" class="btn btn-outline">Learn More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <h2>Contact <span class="highlight">Us</span></h2>
+        <p class="section-subhead">Reach Out to Our Global Team</p>
+      </div>
+      
+      <div class="contact-wrapper">
+        <div class="contact-form-container" data-aos="fade-right">
+          <form class="contact-form">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" placeholder="Your Name" required>
+              <div class="focus-line"></div>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="Your Email" required>
+              <div class="focus-line"></div>
+            </div>
+            
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" placeholder="Subject" required>
+              <div class="focus-line"></div>
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+              <div class="focus-line"></div>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">
+              <span>Send Message</span>
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+        
+        <div class="contact-info" data-aos="fade-left">
+          <div class="info-cards">
+            <div class="info-card">
+              <div class="info-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="info-content">
+                <h3>Headquarters</h3>
+                <p>123 Tech Park, Vijayawada<br>Andhra Pradesh, India</p>
+              </div>
+            </div>
+            
+            <div class="info-card">
+              <div class="info-icon">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div class="info-content">
+                <h3>Call Us</h3>
+                <p>+91 123 456 7890<br>+1 (555) 123-4567</p>
+              </div>
+            </div>
+            
+            <div class="info-card">
+              <div class="info-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="info-content">
+                <h3>Email Us</h3>
+                <p>info@jhaishnatech.com<br>support@jhaishnatech.com</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+       
+<!-- Footer Section -->
+<footer class="global-footer">
+  <div class="footer-content">
+      <div class="footer-logo">
+          <div class="footer-logo-container">
+              <img src="../static/Images/logo.png" alt="Jhainsha Technology Logo" class="footer-logo-img">
+              <span>Jhainsha Technologies</span>
+          </div>
+          <p>Innovative solutions for a digital world</p>
+          <div class="social-links">
+              <a href="#" class="social-icon glow-effect"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="social-icon glow-effect"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-icon glow-effect"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" class="social-icon glow-effect"><i class="fab fa-instagram"></i></a>
+          </div>
+      </div>
+      <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul>
+              <li><a href="../templates/home.html"class="glow-effect">Home</a></li>
+              <li><a href="../templates/products.html" class="glow-effect" >Products</a></li>
+              <li><a href="#services" class="glow-effect">Services</a></li>
+              <li><a href="#clients" class="glow-effect">Clients</a></li>
+              <li><a href="../templates/contact.html" class="glow-effect">Contact Us</a></li>
+              <li><a href="../templates/career.html" class="glow-effect">Careers</a></li>
+          </ul>
+      </div>
+      <div class="footer-column">
+          <h3>Contact Us</h3>
+          <p class="glow-effect">Email: info@jhainsha.com</p>
+          <p class="glow-effect">Phone: +91 866 123 4567</p>
+          <p class="glow-effect">Global Headquarters: Tech Park, MG Road, Vijayawada, India</p>
+          <div class="newsletter-form">
+              <input type="email" placeholder="Enter your email" class="glow-effect">
+              <button class="subscribe-button glow-effect">Subscribe</button>
+          </div>
+      </div>
+  </div>
+  <div class="footer-bottom">
+      <p>© 2025 Jhainsha Technologies. All rights reserved.</p>
+  </div>
+</footer>
+
+  <!-- Loading Animation -->
+  <div class="loader-wrapper" id="loader">
+    <div class="loader">
+      <div class="loader-circle"></div>
+      <div class="loader-line-mask">
+        <div class="loader-line"></div>
+      </div>
+      <span>Jhaishna Technologies</span>
+    </div>
+  </div>
+
+  <!-- Main Scripts -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <!-- Custom Scripts -->
+  <script src="../static/js/script.js"></script> 
+</body>
+</html>

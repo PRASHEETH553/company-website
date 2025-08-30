@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jhaishna Technologies Pvt.Ltd</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="../static/Images/logo.png">
+    <link rel="stylesheet" href="../static/css/contact.css">
+    <link rel="stylesheet" href="../static/css/ai-bot.css">
+    <link rel="stylesheet" href="../static/css/header-footer.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <<header class="global-header">
+        <nav class="navbar" id="navbar">
+            <div class = "logoo">
+                <a href="../templates/home.html" class="logo">
+                <img src="../static/Images/logo.png" alt="Jhaishna Technology Logo" class="logo-img">
+                Jhaishna<span class="logo-sub">Technologies</span>
+                </a>
+            </div>
+            <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+            <ul class="nav-links">
+                <li><a href="../templates/home.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="{{ url_for('products') }}" class="dropbtn">Products</a>
+                    <div class="dropdown-content">
+                        <button class="close-dropdown"><i class="fas fa-times"></i></button>
+                        <div class="dropdown-container">
+                            <div class="dropdown-section left">
+                                <h3>Hardware & Software</h3>
+                                <a href="../templates/Productsf/software&hardware/HRMS.html">HRMS</a>
+                                <a href="../templates/Productsf/software&hardware/MXCloud_AI.html">MXCloud</a>
+                                <a href="../templates/Productsf/software&hardware/LoanManagementSystem.html">Loan Management System</a>
+                                <a href="../templates/Productsf/software&hardware/Fiber_optics.html">Fiber Optics</a>
+                                <a href="../templates/Productsf/software&hardware/taskmanagement.html">Task Management</a>
+                            </div>
+                            <div class="dropdown-section right">
+    <h3>Digital Services</h3>
+    <a href="../templates/Productsf/digitals/OracleCommunicationConsulting.html">Oracle Communication Consulting</a>
+    <a href="../templates/Productsf/digitals/TailoredBilingPlatform.html">Tailored Billing Platform</a>
+    <a href="../templates/Productsf/digitals/TailoredCRM.html">Tailored CRM System</a>
+    <a href="../templates/Productsf/digitals/CloudMigration.html">Cloud Migration</a>
+    <a href="../templates/Productsf/digitals/StaffAugmentation.html">Staff Automation</a>
+    <a href="../templates/Productsf/digitals/DigitalBusinessTransformation.html">Digital Business</a>
+</div>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="../templates/career.html">Careers</a></li>
+                <li><a href="../templates/blog.html">Blog</a></li>
+                <li><a href="../templates/about.html">About Us</a></li>
+                <li><a href="../templates/contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="new-hero" class="new-hero-section">
+        <div class="hero-content-container">
+            <h1>Let's Connect</h1>
+            <p class="hero-subtitle">We're here to help you achieve your business goals with cutting-edge technology solutions. Reach out to us today!</p>
+            <div class="hero-cta-buttons">
+                <a href="#contact-us-section" class="cta-button primary">Contact Sales</a>
+                <a href="#globe-section-wrapper" class="cta-button secondary">Explore Locations</a>
+            </div>
+        </div>
+        <a href="#globe-section-wrapper" class="scroll-down-box">
+            <i class="fas fa-chevron-down"></i>
+            <span>scroll down</span>
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <section id="globe-section-wrapper" class="globe-section-wrapper">
+        <div class="globe-container">
+            <div class="header">
+                <h2>Jhaishna Technologies</h2>
+                <p>3D Globe Tracker</p>
+            </div>
+            <div class="locations">
+                <h3>Locations</h3>
+                <button class="location-button" data-lat="16.5062" data-lon="80.6480" data-branch="vijayawada">Vijayawada, India</button>
+                <button class="location-button" data-lat="19.0760" data-lon="72.8777" data-branch="mumbai">Mumbai, India</button>
+                <button class="location-button" data-lat="22.3193" data-lon="114.1694" data-branch="hongkong">Hong Kong</button>
+                <button class="location-button" data-lat="40.7128" data-lon="-74.0060" data-branch="newyork">New York, USA</button>
+            </div>
+            <button class="back-button">Back to Globe View</button>
+            <div class="location-info">
+                <h3>Location Details</h3>
+                <p class="location-name"></p>
+                <p class="location-coords"></p>
+            </div>
+            <div id="globe-container"></div>
+        </div>
+    </section>
+
+    <section id="contact-us-section" class="contact-us-section">
+        <div class="contact-content-container">
+            <h2>Get in Touch</h2>
+            <p class="contact-subtitle">Have a question or want to work together? Fill out the form below and we'll get back to you as soon as possible.</p>
+            
+            
+            {% if error %}
+                <p style="color: red;">{{ error }}</p>
+            {% endif %}
+            <form id="contactForm" method="POST" action="../templates/contact.html">
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    <label for="name">Full Name:</label>
+                    {{ form.name(id="contact-name", placeholder="Your Full Name", class="form-control") }}
+                    {% for error in form.name.errors %}
+                        <p style="color: red;">{{ error }}</p>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address:</label>
+                    {{ form.email(id="contact-email", placeholder="your.email@example.com", class="form-control") }}
+                    {% for error in form.email.errors %}
+                        <p style="color: red;">{{ error }}</p>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject:</label>
+                    {{ form.subject(id="contact-subject", placeholder="Subject of your message", class="form-control") }}
+                    {% for error in form.subject.errors %}
+                        <p style="color: red;">{{ error }}</p>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    {{ form.message(id="contact-message", rows=6, placeholder="Your message here...", class="form-control") }}
+                    {% for error in form.message.errors %}
+                        <p style="color: red;">{{ error }}</p>
+                    {% endfor %}
+                </div>
+                {{ form.submit(class="cta-button primary form-submit-button") }}
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="global-footer">
+    <div class="footer-content">
+        <div class="footer-logo">
+            <div class="footer-logo-container">
+                <img src="../static/Images/logo.png" alt="Jhainsha Technology Logo" class="footer-logo-img">
+                <span>Jhaishna Technologies</span>
+            </div>
+            <p>Innovative solutions for a digital world</p>
+            <div class="social-links">
+                <a href="#" class="social-icon glow-effect"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon glow-effect"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon glow-effect"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-icon glow-effect"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-column">
+            <h3>Quick Links</h3>    
+            <ul>
+                <li><a href="../templates/home.html">Home</a></li>
+                <li><a href="#services" class="glow-effect">Services</a></li>
+                <li><a href="../templates/products.html">Products</a></li>
+                <li><a href="#clients" class="glow-effect">Clients</a></li>
+                <li><a href="../templates/contact.html" class="glow-effect">Contact Us</a></li>
+                <li><a href="../templates/career.html" class="glow-effect">Careers</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Contact Us</h3>
+            <p class="glow-effect">Email: info@jhainsha.com</p>
+            <p class="glow-effect">Phone: +91 866 123 4567</p>
+            <p class="glow-effect">Global Headquarters: Tech Park, MG Road, Vijayawada, India</p>
+            <div class="newsletter-form">
+                <input type="email" placeholder="Enter your email" class="glow-effect">
+                <button class="subscribe-button glow-effect">Subscribe</button>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2025 Jhainsha Technologies. All rights reserved.</p>
+    </div>
+</footer>
+
+    <div id="search-container">
+        <input type="text" id="search-input" placeholder="Ask...">
+        <button id="search-button">Go</button>
+        <button id="close-search-button">X</button>
+    </div>
+    <div id="ai-assistant">
+        <div id="bot-speech-bubble" class="speech-bubble">Ask Me</div>
+        <div class="bot-main-body">
+            <div class="bot-head">
+                <div class="bot-visor"><div class="visor-light"></div><div class="visor-reflection"></div></div>
+                <div class="head-antenna left"></div><div class="head-antenna right"></div>
+                <div class="bot-mouth"></div>
+            </div>
+            <div class="bot-neck"></div>
+            <div class="bot-torso"><div class="torso-panel"><div class="panel-light"></div></div></div>
+            <div class="bot-arm arm-left"><div class="arm-joint"></div><div class="bot-hand hand-left"></div></div>
+            <div class="bot-arm arm-right"><div class="i"></div><div class="bot-hand hand-right"></div></div>
+            <div class="bot-base"></div>
+            <div class="hologram-projector"><div class="holo-scanlines"></div></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="../static/js/contact.js"></script>
+    <script src="../static/js/ai-bot.js"></script>
+    <script src="../static/js/header-footer.js"></script>
+</body>
+</html>
