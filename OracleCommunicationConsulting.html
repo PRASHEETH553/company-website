@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oracle Communication Consulting - Digital Services</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='Images/logo.png') }}">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #E8F5E9; /* Light green */
+            color: #355E3B; /* Dark forest green */
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to bottom, rgba(232, 245, 233, 0.7), rgba(200, 230, 201, 0.9));
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 46px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            color: #355E3B;
+        }
+
+        .hero h1 span {
+            color: #F28C82; /* Warm coral */
+            position: relative;
+        }
+
+        .hero h1 span::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #F28C82, #F4D03F);
+            animation: underline 2s infinite;
+        }
+
+        @keyframes underline {
+            0% { width: 0; }
+            50% { width: 100%; }
+            100% { width: 0; }
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #6B8E7A; /* Muted sage green */
+            margin-bottom: 30px;
+            max-width: 700px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #F28C82; /* Warm coral */
+            color: #FFFFFF;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 4px 15px rgba(242, 140, 130, 0.3);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(45deg, #F4D03F, #F28C82);
+            transition: all 0.5s ease;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            width: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(242, 140, 130, 0.5);
+        }
+
+        /* Overview Section */
+        .overview {
+            background-color: #C8E6C9; /* Very light green */
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 36px;
+            text-transform: uppercase;
+            position: relative;
+            padding-bottom: 15px;
+            color: #355E3B;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #F28C82, #F4D03F);
+        }
+
+        .overview-text {
+            font-size: 18px;
+            color: #6B8E7A;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        /* Services Section */
+        .services {
+            background-color: #DCEDC8; /* Light lime green */
+            padding: 100px 0;
+        }
+
+        .services-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            width: calc(33.33% - 20px);
+            min-width: 250px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(200, 230, 201, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .service-icon {
+            font-size: 48px;
+            color: #F28C82;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #355E3B;
+        }
+
+        .service-card p {
+            color: #6B8E7A;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .service-card a {
+            display: inline-block;
+            color: #F28C82;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        .service-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Call to Action Section */
+        .cta {
+            background-color: #C8E6C9;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta-text {
+            font-size: 18px;
+            color: #6B8E7A;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .animate-delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .animate-delay-2 {
+            animation-delay: 0.2s;
+        }
+
+        .animate-delay-3 {
+            animation-delay: 0.3s;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .section-title {
+                font-size: 32px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .service-card {
+                width: calc(50% - 15px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .service-card {
+                width: 100%;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header-footer.css') }}">
+    <script>
+        // Scroll animation for elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+    <script src="{{ url_for('static', filename='js/header-footer.js') }}"></script>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="global-header">
+        <nav class="navbar" id="navbar">
+            <a href="{{ url_for('home') }}" class="logo">
+                <img src="{{ url_for('static', filename='Images/logo.png') }}" alt="Oracle Consulting Logo" class="logo-img">
+                Jhaishna<span>Technologies Pvt.Ltd</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li class="dropdown">
+                    <a href="{{ url_for('products') }}" class="dropbtn">Products</a>
+                    <div class="dropdown-content">
+                        <button class="close-dropdown"><i class="fas fa-times"></i></button>
+                        <div class="dropdown-container">
+                            <div class="dropdown-section left">
+                                <h3>Hardware & Software</h3>
+                                <a href="{{ url_for('Productsf', product='HRMS') }}">HRMS</a>
+                                <a href="{{ url_for('Productsf', product='MXCloud_AI') }}">MXCloud</a>
+                                <a href="{{ url_for('Productsf', product='LoanManagementSystem') }}">Loan Management System</a>
+                                <a href="{{ url_for('Productsf', product='Fiber_optics') }}">Fiber Optics</a>
+                                <a href="{{ url_for('Productsf', product='TaskManagement') }}">Task Management</a>
+                            </div>
+                            <div class="dropdown-section right">
+    <h3>Digital Services</h3>
+    <a href="{{ url_for('Digitalsf', digital='OracleCommunicationConsulting') }}">Oracle Communication Consulting</a>
+    <a href="{{ url_for('Digitalsf', digital='TailoredBilingPlatform') }}">Tailored Billing Platform</a>
+    <a href="{{ url_for('Digitalsf', digital='TailoredCRM') }}">Tailored CRM System</a>
+    <a href="{{ url_for('Digitalsf', digital='CloudMigration') }}">Cloud Migration</a>
+    <a href="{{ url_for('Digitalsf', digital='StaffAugmentation') }}">Staff Automation</a>
+    <a href="{{ url_for('Digitalsf', digital='DigitalBusinessTransformation') }}">Digital Business</a>
+</div>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="{{ url_for('career') }}">Careers</a></li>
+                <li><a href="{{ url_for('blog') }}">Blog</a></li>
+                <li><a href="{{ url_for('about') }}">About Us</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="animate">Oracle Communication <span>Consulting</span></h1>
+            <p class="animate animate-delay-1">
+                Empower your business with tailored billing and revenue management solutions designed for communications service providers.
+            </p>
+            <a href="#services" class="btn animate animate-delay-2">Explore Services</a>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="overview" id="overview">
+        <div class="container">
+            <h2 class="section-title">Oracle Communication Consulting</h2>
+            <p class="overview-text animate">
+                Oracle BRM (Billing And Revenue Management) is a comprehensive, end-to-end revenue management solution tailored for communications service providers, encompassing telecommunications and internet service providers. It empowers these organizations to efficiently manage the complete billing and revenue lifecycle.
+            </p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Digital Services</h2>
+            <div class="services-container">
+                <div class="service-card animate">
+                    <div class="service-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+                    <h3>Billing Solutions Expertise</h3>
+                    <p>Specialize in delivering optimized ORACLE BRM solutions by providing deployment enhancement, customization, upgrade & support services in the most cost-effective manner.</p>
+                </div>
+                <div class="service-card animate animate-delay-1">
+                    <div class="service-icon"><i class="fas fa-code"></i></div>
+                    <h3>Custom Software Development</h3>
+                    <p>Our talent pool of highly experienced consultants work closely with clients' internal BRM resources to increase their BRM capability and bring best practice solutions.</p>
+                </div>
+                <div class="service-card animate animate-delay-2">
+                    <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Data Security and Compliance</h3>
+                    <p>Ensure robust security and compliance standards are met with every solution implemented.</p>
+                </div>
+                <div class="service-card animate animate-delay-3">
+                    <div class="service-icon"><i class="fas fa-money-bill-wave"></i></div>
+                    <h3>Cost-Effective Solutions</h3>
+                    <p>Deliver optimized services that maximize value while minimizing costs for your business.</p>
+                </div>
+                <div class="service-card animate">
+                    <div class="service-icon"><i class="fas fa-globe"></i></div>
+                    <h3>Best Experience for Your Business</h3>
+                    <p>Assertively communicate next-generation process improvements and competently predominate next-generation portals.</p>
+                </div>
+                <div class="service-card animate animate-delay-1">
+                    <div class="service-icon"><i class="fas fa-check"></i></div>
+                    <h3>Subscription Management</h3>
+                    <p>Efficiently manage subscriptions with rating, charging, and revenue optimization features.</p>
+                </div>
+                <div class="service-card animate animate-delay-2">
+                    <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Rating and Charging</h3>
+                    <p>Implement flexible pricing and real-time billing for accurate revenue recognition.</p>
+                </div>
+                <div class="service-card animate animate-delay-3">
+                    <div class="service-icon"><i class="fas fa-user-cog"></i></div>
+                    <h3>Customer Self-Service</h3>
+                    <p>Empower customers with self-service options for managing their accounts.</p>
+                </div>
+                <div class="service-card animate">
+                    <div class="service-icon"><i class="fas fa-cogs"></i></div>
+                    <h3>Oracle BRM Implementation</h3>
+                    <p>Comprehensive solution to manage billing, revenue, and customer processes effectively with careful planning and expertise.</p>
+                </div>
+                <div class="service-card animate animate-delay-1">
+                    <div class="service-icon"><i class="fas fa-database"></i></div>
+                    <h3>Data Migration</h3>
+                    <p>Ensure accurate and secure data transfer from existing systems to Oracle BRM with meticulous planning and execution.</p>
+                </div>
+                <div class="service-card animate animate-delay-2">
+                    <div class="service-icon"><i class="fas fa-tools"></i></div>
+                    <h3>Managed Services</h3>
+                    <p>End-to-end support including system monitoring, issue resolution, performance enhancement, and software upgrades.</p>
+                </div>
+                <div class="service-card animate animate-delay-3">
+                    <div class="service-icon"><i class="fas fa-vial"></i></div>
+                    <h3>Testing and Automation</h3>
+                    <p>Develop test plans, execute cases, and automate tasks to improve efficiency and system quality.</p>
+                </div>
+                <div class="service-card animate">
+                    <div class="service-icon"><i class="fas fa-headset"></i></div>
+                    <h3>Other Core Services</h3>
+                    <p>Dynamically pursue reliable convergence and develop end-to-end customer service improvements.</p>
+                </div>
+                <div class="service-card animate animate-delay-1">
+                    <div class="service-icon"><i class="fas fa-sign-in-alt"></i></div>
+                    <h3>OBRM Access Portal (OAP)</h3>
+                    <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#">Read more</a>
+                </div>
+                <div class="service-card animate animate-delay-2">
+                    <div class="service-icon"><i class="fas fa-play"></i></div>
+                    <h3>Automated Service Activation Program</h3>
+                    <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#">Read more</a>
+                </div>
+                <div class="service-card animate animate-delay-3">
+                    <div class="service-icon"><i class="fas fa-eye"></i></div>
+                    <h3>Monitoring</h3>
+                    <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#">Read more</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta" id="cta">
+        <div class="container">
+            <h2 class="section-title">Join our 3456 subscribers</h2>
+            <p class="cta-text animate">
+                Get exclusive access to Jhaishna, premium services, and the latest news.
+            </p>
+            <a href="{{ url_for('contact') }}" class="btn animate animate-delay-1">Subscribe Now</a>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="global-footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <div class="footer-logo-container">
+                    <img src="{{ url_for('static', filename='Images/logo.png') }}" alt="Oracle Consulting Logo" class="footer-logo-img">
+                    <span>Oracle Consulting Technologies</span>
+                </div>
+                <p>Innovative digital solutions for communication providers</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon glow-effect"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon glow-effect"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon glow-effect"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon glow-effect"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('products') }}" class="glow-effect">Products</a></li>
+                    <li><a href="{{ url_for('career') }}" class="glow-effect">Careers</a></li>
+                    <li><a href="{{ url_for('blog') }}" class="glow-effect">Blog</a></li>
+                    <li><a href="{{ url_for('about') }}" class="glow-effect">About Us</a></li>
+                    <li><a href="{{ url_for('contact') }}" class="glow-effect">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <p class="glow-effect">Email: info@oracleconsulting.com</p>
+                <p class="glow-effect">Phone: +91 321 654 9870</p>
+                <p class="glow-effect">Global Headquarters: Tech Plaza, Mumbai, India</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" class="glow-effect">
+                    <button class="subscribe-button glow-effect">Subscribe</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Oracle Consulting Technologies. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
