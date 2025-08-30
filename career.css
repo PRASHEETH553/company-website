@@ -1,0 +1,797 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #E8F5E9; /* Light green, replacing creamy white */
+    color: #355E3B; /* Dark forest green, unchanged */
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+section {
+    padding: 80px 0;
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    background: rgba(232, 245, 233, 0.9); /* Light green with opacity, replacing creamy white */
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(200, 230, 201, 0.3); /* Lighter green border */
+}
+
+.navbar.scrolled {
+    padding: 15px 40px;
+    background: rgba(241, 248, 241, 0.95); /* Slightly lighter green */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); /* Unchanged shadow */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    font-weight: 700;
+    color: #355E3B; /* Dark forest green, unchanged */
+}
+
+.logo span {
+    color: #F28C82; /* Warm coral, unchanged */
+    margin-left: 5px;
+    position: relative;
+}
+
+.logo span::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #F28C82, transparent); /* Warm coral gradient, unchanged */
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.logo-img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: #355E3B; /* Dark forest green, unchanged */
+    font-weight: 500;
+    font-size: 16px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #F28C82; /* Warm coral, unchanged */
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #F28C82; /* Warm coral, unchanged */
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(to bottom, rgba(232, 245, 233, 0.7), rgba(200, 230, 201, 0.9)), url('https://via.placeholder.com/1920x1080') no-repeat center center/cover; /* Light green gradient */
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    margin-top: 80px;
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.hero h1 {
+    font-size: 46px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Unchanged shadow */
+    color: #355E3B; /* Dark forest green, unchanged */
+}
+
+.hero h1 span {
+    color: #F28C82; /* Warm coral, unchanged */
+}
+
+.hero p {
+    font-size: 18px;
+    color: #6B8E7A; /* Muted sage green, unchanged */
+    margin-bottom: 30px;
+    max-width: 700px;
+}
+
+.btn {
+    display: inline-block;
+    background: #F28C82; /* Warm coral, unchanged */
+    color: #FFFFFF; /* White, unchanged */
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 0 4px 15px rgba(242, 140, 130, 0.3); /* Coral shadow, unchanged */
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(45deg, #F4D03F, #F28C82); /* Soft gold to warm coral, unchanged */
+    transition: all 0.5s ease;
+    z-index: -1;
+}
+
+.btn:hover::before {
+    width: 100%;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(242, 140, 130, 0.5); /* Coral shadow, unchanged */
+}
+
+.btn.outline {
+    background: transparent;
+    border: 2px solid #F28C82; /* Warm coral, unchanged */
+    color: #F28C82; /* Warm coral, unchanged */
+}
+
+.btn.outline:hover {
+    color: #FFFFFF; /* White, unchanged */
+}
+
+/* Culture Section */
+.culture {
+    background-color: #C8E6C9; /* Very light green, replacing soft mint */
+    padding: 100px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 36px;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 15px;
+    color: #355E3B; /* Dark forest green, unchanged */
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to right, #F28C82, #F4D03F); /* Warm coral to soft gold, unchanged */
+}
+
+.culture-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.culture-card {
+    background: rgba(255, 255, 255, 0.8); /* White with opacity, unchanged */
+    border-radius: 15px;
+    padding: 30px;
+    width: calc(33.333% - 20px);
+    min-width: 300px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(200, 230, 201, 0.3); /* Lighter green border */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Unchanged shadow */
+    transition: all 0.3s ease;
+}
+
+.culture-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); /* Unchanged shadow */
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.culture-icon {
+    font-size: 48px;
+    color: #F28C82; /* Warm coral, unchanged */
+    margin-bottom: 20px;
+}
+
+.culture-card h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #355E3B; /* Dark forest green, unchanged */
+}
+
+.culture-card p {
+    color: #6B8E7A; /* Muted sage green, unchanged */
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+/* Jobs Section */
+.jobs {
+    background-color: #DCEDC8; /* Light lime green, replacing pale sky blue */
+    padding: 100px 0;
+}
+
+.jobs-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.job-card {
+    background: rgba(255, 255, 255, 0.8); /* White with opacity, unchanged */
+    border-radius: 15px;
+    padding: 30px;
+    border: 1px solid rgba(200, 230, 201, 0.3); /* Lighter green border */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Unchanged shadow */
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.job-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); /* Unchanged shadow */
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.job-title {
+    font-size: 24px;
+    color: #355E3B; /* Dark forest green, unchanged */
+}
+
+.job-location {
+    display: flex;
+    align-items: center;
+    color: #6B8E7A; /* Muted sage green, unchanged */
+}
+
+.job-location i {
+    color: #F28C82; /* Warm coral, unchanged */
+    margin-right: 8px;
+}
+
+.job-meta {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.job-type, .job-experience {
+    display: flex;
+    align-items: center;
+    color: #6B8E7A; /* Muted sage green, unchanged */
+    font-size: 15px;
+}
+
+.job-type i, .job-experience i {
+    color: #F28C82; /* Warm coral, unchanged */
+    margin-right: 8px;
+}
+
+.job-description {
+    color: #6B8E7A; /* Muted sage green, unchanged */
+    margin-bottom: 20px;
+    line-height: 1.7;
+}
+
+.job-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.job-tag {
+    background: rgba(242, 140, 130, 0.1); /* Warm coral with opacity, unchanged */
+    color: #F28C82; /* Warm coral, unchanged */
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.job-card.expanded .job-details {
+    display: block;
+}
+
+.job-details {
+    display: none;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(200, 230, 201, 0.3); /* Lighter green border */
+}
+
+.job-details h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #355E3B; /* Dark forest green, unchanged */
+}
+
+.job-details ul {
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+.job-details ul li {
+    color: #6B8E7A; /* Muted sage green, unchanged */
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 15px;
+}
+
+.job-details ul li::before {
+    content: '•';
+    color: #F28C82; /* Warm coral, unchanged */
+    position: absolute;
+    left: 0;
+}
+
+.apply-btn {
+    margin-top: 20px;
+}
+
+/* Apply Section */
+.apply {
+    background: linear-gradient(to bottom, #E8F5E9, #C8E6C9); /* Light green to very light green */
+    padding: 100px 0;
+}
+
+.form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.8); /* White with opacity, unchanged */
+    border-radius: 15px;
+    padding: 40px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(200, 230, 201, 0.3); /* Lighter green border */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Unchanged shadow */
+}
+
+.form-section {
+    margin-bottom: 30px;
+}
+
+.form-section:last-child {
+    margin-bottom: 0;
+}
+
+.form-section h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(200, 230, 201, 0.3); /* Lighter green border */
+    color: #355E3B; /* Dark forest green, unchanged */
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    flex: 1;
+    min-width: 250px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #355E3B; /* Dark forest green, unchanged */
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(232, 245, 233, 0.7); /* Light green with opacity */
+    border: 1px solid rgba(200, 230, 201, 0.5); /* Lighter green border */
+    border-radius: 8px;
+    color: #355E3B; /* Dark forest green, unchanged */
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #F28C82; /* Warm coral, unchanged */
+    box-shadow: 0 0 0 2px rgba(242, 140, 130, 0.2); /* Coral glow, unchanged */
+}
+
+textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.file-upload {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.file-upload-btn {
+    display: block;
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(255, 255, 255, 0.8); /* White with opacity, unchanged */
+    border: 1px dashed rgba(242, 140, 130, 0.5); /* Warm coral dashed, unchanged */
+    border-radius: 8px;
+    color: #6B8E7A; /* Muted sage green, unchanged */
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.file-upload-btn:hover {
+    background: rgba(242, 140, 130, 0.1); /* Warm coral with opacity, unchanged */
+    border-color: #F28C82; /* Warm coral, unchanged */
+}
+
+.file-upload-btn i {
+    margin-right: 8px;
+    color: #F28C82; /* Warm coral, unchanged */
+}
+
+.file-upload input[type="file"] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.file-name {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #6B8E7A; /* Muted sage green, unchanged */
+}
+
+.form-submit {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* Notification */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 8px;
+    color: #FFFFFF; /* White, unchanged */
+    font-weight: 500;
+    z-index: 2000;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.notification.success {
+    background: linear-gradient(45deg, #28a745, #20c997); /* Success colors, unchanged */
+}
+
+.notification.error {
+    background: linear-gradient(45deg, #dc3545, #ff4e83); /* Error colors, unchanged */
+}
+
+.notification i {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+/* Footer */
+.footer {
+    background-color: #F1F8F1; /* Very light green, replacing pure white */
+    padding: 60px 0 30px;
+    border-top: 1px solid #DCEDC8; /* Light lime green border */
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-column h4 {
+    font-size: 18px;
+    color: #355E3B; /* Dark forest green, unchanged */
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-column h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: #F28C82; /* Warm coral, unchanged */
+}
+
+.footer-column ul li a {
+    color: #8AA69C; /* Light sage green, unchanged */
+    transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+    color: #F28C82; /* Warm coral, unchanged */
+}
+
+.footer-column ul li span {
+    color: #8AA69C; /* Light sage green, unchanged */
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(200, 230, 201, 0.2); /* Lighter green with opacity */
+    border-radius: 50%;
+    color: #8AA69C; /* Light sage green, unchanged */
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    background: #F28C82; /* Warm coral, unchanged */
+    color: #FFFFFF; /* White, unchanged */
+    transform: translateY(-3px);
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 50px;
+    color: #8AA69C; /* Light sage green, unchanged */
+    font-size: 14px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    border-top: 1px solid #DCEDC8; /* Light lime green border */
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Lighter overlay, unchanged */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: #C8E6C9; /* Very light green, replacing soft mint */
+    max-width: 600px;
+    width: 90%;
+    border-radius: 15px;
+    padding: 40px;
+    position: relative;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    transform: translateY(30px);
+    transition: all 0.3s ease;
+}
+
+.modal.open .modal-content {
+    transform: translateY(0);
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    color: #8AA69C; /* Light sage green, unchanged */
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    color: #F28C82; /* Warm coral, unchanged */
+    transform: rotate(90deg);
+}
+
+.modal-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #355E3B; /* Dark forest green, unchanged */
+}
+
+.modal-body {
+    color: #6B8E7A; /* Muted sage green, unchanged */
+    margin-bottom: 25px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Responsive Design remains unchanged */
+@media (max-width: 992px) {
+    .section-title {
+        font-size: 32px;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .culture-card {
+        width: calc(50% - 15px);
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 20px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .culture-card {
+        width: 100%;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.animate-delay-1 {
+    animation-delay: 0.1s;
+}
+
+.animate-delay-2 {
+    animation-delay: 0.2s;
+}
+
+.animate-delay-3 {
+    animation-delay: 0.3s;
+}

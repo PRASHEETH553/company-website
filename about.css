@@ -1,0 +1,633 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff;
+    color: #333333;
+    overflow-x: hidden;
+}
+
+
+/* Make the features and core-values sections position: relative to contain the video */
+.features, .core-values {
+    position: relative;
+    color: #ffffffa1;
+    overflow: hidden;
+    padding: 80px 0;
+}
+
+/* Add an overlay to ensure text is readable over the video */
+.features::before, .core-values::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.85);
+    z-index: -1;
+}
+
+/* Ensure cards and value items stand out against video background */
+.feature-card, .value-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover, .value-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Fix for z-index stacking issues */
+.section-title {
+    position: relative;
+    z-index: 1;
+}
+
+.features-container, .values-container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Make sure hero video background is also working properly */
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Fix for mobile devices */
+@media (max-width: 768px) {
+    .video-background video {
+        height: 100%;
+        width: auto;
+    }
+}
+
+/* Hero Section with Full Video Background */
+.hero {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    background: #f5f8ff;
+}
+
+
+.hero-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    padding: 20px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    margin-top: 30px;
+  }
+}
+
+.hero-text {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-text h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    color: #B22222;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 1s forwards 0.5s;
+}
+
+.hero-text h1 span {
+    color: #1E3A8A;;
+    position: relative;
+    display: inline-block;
+}
+
+.hero-text h1 span::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: rgba(58, 134, 255, 0.3);
+    z-index: -1;
+}
+
+.hero-text p {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    color: #ffffff;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 1s forwards 0.8s;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.btn-group {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 1s forwards 1.1s;
+}
+
+/* Enhanced CTA Button */
+.btn {
+    display: inline-block;
+    padding: 14px 32px;
+    background: linear-gradient(45deg, #3a86ff, #5e72eb);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(58, 134, 255, 0.4);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    letter-spacing: 1px;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #5e72eb, #3a86ff);
+    transition: all 0.4s ease;
+    z-index: -1;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(58, 134, 255, 0.5);
+}
+
+.btn:hover::before {
+    left: 0;
+}
+
+.btn.outline {
+    background: transparent;
+    border: 2px solid #3a86ff;
+    color: #3a86ff;
+}
+
+.btn.outline:hover {
+    background: #3a86ff;
+    color: #fff;
+}
+
+/* Decorative elements */
+.shape {
+    position: absolute;
+    z-index: 2;
+}
+
+.shape-1 {
+    top: 120px;
+    left: 5%;
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(45deg, #3a86ff, #5e72eb);
+    border-radius: 50%;
+    opacity: 0.15;
+    animation: float 12s ease-in-out infinite;
+}
+
+.shape-2 {
+    bottom: 15%;
+    right: 8%;
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(45deg, #ff6b6b, #ffa86c);
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    opacity: 0.1;
+    animation: float 15s ease-in-out infinite alternate;
+}
+
+.shape-3 {
+    top: 30%;
+    right: 20%;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(45deg, #4db5ff, #3a86ff);
+    border-radius: 60% 40% 40% 60% / 60% 60% 40% 40%;
+    opacity: 0.1;
+    animation: float 20s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(15px, 15px) rotate(10deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* Text animation for other sections */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Features Section */
+.features {
+    padding: 120px 0;
+    background: linear-gradient(to bottom, #f5f8ff, #ffffff);
+    position: relative;
+    overflow: hidden;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 60px;
+    font-size: 2.8rem;
+    color: #333333;
+    position: relative;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(to right, #3a86ff, #5e72eb);
+    border-radius: 2px;
+}
+
+.features-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 30px;
+}
+
+.feature-card {
+    flex: 1 1 300px;
+    max-width: 350px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    padding: 40px 30px;
+    border: 1px solid #e5e5e5;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(58, 134, 255, 0.05), transparent);
+    transition: all 0.5s ease;
+    z-index: -1;
+}
+
+.feature-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border-color: rgba(58, 134, 255, 0.3);
+}
+
+.feature-card:hover::before {
+    top: 0;
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 25px;
+    color: #3a86ff;
+    background: rgba(58, 134, 255, 0.1);
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+    background: rgba(58, 134, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.feature-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #333333;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.feature-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: #3a86ff;
+    transition: width 0.3s ease;
+}
+
+.feature-card:hover .feature-title::after {
+    width: 60px;
+}
+
+.feature-desc {
+    color: #666666;
+    line-height: 1.8;
+}
+
+/* About Section */
+.about {
+    padding: 120px 0;
+    background: #e8f2ff;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-container {
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.about-image {
+    flex: 1;
+    margin-right: 50px;
+    position: relative;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 15px 30px rgba(58, 134, 255, 0.2);
+    transition: all 0.5s ease;
+    transform: rotate(-2deg);
+}
+
+.about-image::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 100%;
+    height: 100%;
+    border: 3px solid #3a86ff;
+    border-radius: 16px;
+    z-index: -1;
+    opacity: 0.3;
+    transition: all 0.5s ease;
+}
+
+.about-image:hover img {
+    transform: rotate(0deg);
+}
+
+.about-image:hover::before {
+    top: 10px;
+    left: 10px;
+    opacity: 0.5;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-title {
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+    color: #333333;
+    position: relative;
+    padding-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.about-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(to right, #3a86ff, transparent);
+}
+
+.about-desc {
+    color: #555555;
+    line-height: 1.9;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+}
+
+
+/* Responsive */
+@media (max-width: 992px) {
+    .hero-text h1 {
+        font-size: 3rem;
+    }
+
+    .about-container {
+        flex-direction: column;
+    }
+
+    .about-text {
+        padding-right: 0;
+        margin-top: 60px;
+    }
+
+    .about-image {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 20px;
+    }
+
+    .nav-links {
+        display: none; /* Consider adding a hamburger menu for mobile */
+    }
+
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-text p {
+        font-size: 1.2rem;
+    }
+
+    .btn-group {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+    }
+
+    .about-title {
+        font-size: 2rem;
+    }
+}
+
+/* Logo styling */
+.logo-img {
+    height: 40px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+/* Footer columns */
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    text-align: left;
+    max-width: 1200px;
+    margin: 0 auto 30px auto;
+    padding: 0 20px;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-column h4 {
+    color: #333333;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    border-bottom: 1px solid #3a86ff;
+    padding-bottom: 8px;
+    display: inline-block;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column li {
+    margin-bottom: 10px;
+}
+
+.footer-column a, .footer-column span {
+    color: #666666;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+    color: #3a86ff;
+}
+
+/* Core Values section */
+.core-values {
+    padding: 80px 0;
+    background: #f0f7ff;
+    text-align: center;
+}
+
+.values-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 40px auto 0 auto;
+    padding: 0 20px;
+}
+
+.value-item {
+    flex: 1 1 300px;
+    max-width: 350px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.value-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.value-item h3 {
+    color: #3a86ff;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.value-item p {
+    color: #555555;
+    line-height: 1.7;
+    font-size: 1rem;
+}

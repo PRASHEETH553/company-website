@@ -1,0 +1,501 @@
+/* template/new.css */
+
+/* --- General Page Styles --- */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* background-color: #f4f7f6; /* THIS WILL BE COVERED BY THE RIPPLE CANVAS if canvas is opaque */
+                                /* Set to white in inline style of HTML for initial load */
+    color: #333;
+    overflow-x: hidden; /* Still important */
+}
+* { box-sizing: border-box; }
+
+/* --- Hero Section Styles --- */
+.new-hero-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 80vh;
+    height: auto;
+    background-color: transparent !important; /* <<< CRITICAL: Hero must be transparent */
+    padding: 60px 8%;
+    position: relative; /* For z-index stacking and scroll-down button */
+    z-index: 10;       /* Above page ripple canvas */
+    text-align: left;
+    /* margin-top is handled by inline style in HTML */
+}
+
+.hero-content-container {
+    max-width: 700px;
+    position: relative; /* Keep content flow */
+    z-index: 11; /* Above its parent's potential pseudo-elements if any */
+}
+
+.new-hero-section h1 {
+    font-size: 3.8rem;
+    font-weight: 700;
+    /* color: #2c3e50; /* Colors now set in page-ripple.css for better contrast */
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    /* color: #55606a; /* Colors now set in page-ripple.css */
+    margin-bottom: 35px;
+    line-height: 1.7;
+    max-width: 600px;
+}
+
+.hero-cta-buttons {
+    display: flex;
+    gap: 20px; /* Space between buttons */
+    margin-bottom: 40px; /* Space before scroll down or end of section */
+}
+
+.cta-button {
+    padding: 12px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 5px; /* Slightly rounded corners */
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.cta-button.primary {
+    background-color: #007bff; /* Example primary color - blue */
+    color: white;
+    border-color: #007bff;
+}
+.cta-button.primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+}
+
+.cta-button.secondary {
+    background-color: transparent;
+    color: #007bff;
+    border-color: #007bff;
+}
+.cta-button.secondary:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+    color: #0056b3;
+    border-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+
+/* Scroll Down Box */
+.scroll-down-box {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 18px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    color: #000000;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    animation: bounce-subtle 2.5s infinite;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    z-index: 12; /* Ensure it's above hero content and ripple */
+}
+.scroll-down-box i { font-size: 0.9em; color: #000000; }
+.scroll-down-box span { margin: 0 10px; }
+
+
+/* New bounce animation if you want it less aggressive */
+@keyframes bounce-subtle {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translate(-50%, 0);
+    }
+    40% {
+        transform: translate(-50%, -10px); /* Less bounce */
+    }
+    60% {
+        transform: translate(-50%, -5px);
+    }
+}
+
+#globe-container {
+    width: 100%;
+    height: 60vh;
+    min-height: 400px;
+    max-height: 700px;
+    background-color: #000; /* Fallback */
+    position: relative;
+    z-index: 1;
+}
+
+.label {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    pointer-events: none;
+    transform: translate(-50%, -150%);
+    z-index: 100;
+    display: none;
+}
+.location-button {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+    padding: 8px 15px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.location-button:hover {
+    background-color: #555;
+}
+
+.back-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(50, 50, 50, 0.8);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none; /* JS will show it */
+    z-index: 10;
+}
+
+.location-info {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    width: 250px;
+    display: none; /* JS will show it */
+    z-index: 10;
+}
+.location-info h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+.location-info p {
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+.location-info .location-info-content {
+    margin-top: 8px;
+    font-style: italic;
+    color: #ddd;
+}
+
+/* --- Globe Section Wrapper --- */
+.globe-section-wrapper {
+    min-height: 100vh;
+    background-color: #000000; /* This will cover the ripple unless made transparent */
+    color: #ffffff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; /* For z-index stacking */
+    z-index: 5; /* Above page ripple, but below hero/navbar */
+}
+
+
+.globe-container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.globe-container .header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.globe-container .header h2 {
+    margin-bottom: 5px;
+    font-size: 1.8em;
+    color: #fff;
+}
+.globe-container .header p {
+    font-size: 1em;
+    color: #ccc;
+}
+.globe-container .locations {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.globe-container .locations h3 {
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.location-button {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+    padding: 8px 15px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.location-button:hover {
+    background-color: #555;
+}
+
+.back-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(50, 50, 50, 0.8);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none; /* JS will show it */
+    z-index: 10;
+}
+
+.location-info {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    width: 250px;
+    display: none; /* JS will show it */
+    z-index: 10;
+}
+.location-info h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+.location-info p {
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+.location-info .location-info-content {
+    margin-top: 8px;
+    font-style: italic;
+    color: #ddd;
+}
+
+#globe-container {
+    width: 100%;
+    height: 60vh;
+    min-height: 400px;
+    max-height: 700px;
+    background-color: #000; /* Fallback */
+    position: relative;
+    z-index: 1;
+}
+
+.label {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    pointer-events: none;
+    transform: translate(-50%, -150%);
+    z-index: 100;
+    display: none;
+}
+
+/* --- Footer Styles --- */
+.footer {
+    background-color: #222; /* This will cover the ripple */
+    color: #ccc;
+    padding: 40px 20px;
+    font-size: 0.9em;
+    position: relative; /* For z-index stacking */
+    z-index: 5; /* Above page ripple */
+}
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 20px;
+}
+.footer-column {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 20px;
+}
+.footer-column h3 {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+.footer-column p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+.footer-column ul li {
+    margin-bottom: 8px;
+}
+.footer-column ul li a {
+    color: #ccc;
+    text-decoration: none;
+}
+.footer-column ul li a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+.social-links {
+    display: flex;
+    gap: 10px;
+}
+.social-links .social-icon {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+.social-links .social-icon:hover {
+    color: #fff;
+}
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #444;
+    font-size: 0.8em;
+}
+/* --- Contact Form Section --- */
+.contact-us-section {
+    padding: 80px 8%; /* Consistent padding with hero */
+    background-color: #f9f9f9; /* Light grey background to differentiate */
+    text-align: center;
+    /* position: relative;  <-- Already set in inline style in HTML head */
+    /* z-index: 5;        <-- Already set in inline style in HTML head */
+}
+
+.contact-content-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left; /* Align form content to the left within the centered container */
+}
+
+.contact-us-section h2 {
+    font-size: 2.8rem; /* Slightly smaller than hero h1 */
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    text-align: center; /* Center the main heading */
+}
+
+.contact-subtitle {
+    font-size: 1.1rem;
+    color: #55606a;
+    margin-bottom: 40px;
+    line-height: 1.6;
+    text-align: center; /* Center the subtitle */
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#contactForm .form-group {
+    margin-bottom: 25px;
+}
+
+#contactForm label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+#contactForm input[type="text"],
+#contactForm input[type="email"],
+#contactForm textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: #333;
+    background-color: #fff;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Added box-shadow transition */
+    box-sizing: border-box; /* Ensure padding doesn't add to width */
+}
+
+#contactForm input[type="text"]:focus,
+#contactForm input[type="email"]:focus,
+#contactForm textarea:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+#contactForm textarea {
+    resize: vertical; /* Allow vertical resizing */
+    min-height: 120px;
+}
+
+/* Reusing .cta-button.primary. Added .form-submit-button for potential specific overrides */
+#contactForm .form-submit-button {
+    display: block; /* Make button block to center it */
+    margin: 20px auto 0 auto; /* Center the button */
+    min-width: 200px; /* Give it a decent minimum width */
+    padding: 12px 28px; /* Ensure padding matches other .cta-button */
+}
+
+/* Responsive adjustments for the form */
+@media (max-width: 768px) {
+    .contact-us-section {
+        padding: 60px 5%;
+    }
+    .contact-us-section h2 {
+        font-size: 2.2rem;
+    }
+    .contact-subtitle {
+        font-size: 1rem;
+    }
+    #contactForm input[type="text"],
+    #contactForm input[type="email"],
+    #contactForm textarea {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+    #contactForm .form-submit-button {
+         min-width: 160px;
+         padding: 10px 24px;
+    }
+}

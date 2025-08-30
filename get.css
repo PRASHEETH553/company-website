@@ -1,0 +1,42 @@
+/* Enable scroll snapping for the entire page */
+html, body {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+}
+
+/* Each full-screen section */
+section {
+  scroll-snap-align: start;
+  min-height: 100vh;
+}
+
+/* Get in Touch section */
+.get-in-touch-section {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.get-in-touch-logo h1 {
+  font-size: 4rem;
+  font-weight: bold;
+  color: white;
+  margin: 0;
+  text-shadow: 
+    0 0 5px rgba(255, 255, 255, 0.4),
+    0 0 10px rgba(255, 255, 255, 0.3),
+    0 0 20px rgba(255, 255, 255, 0.25),
+    0 0 40px rgba(255, 255, 255, 0.2),
+    0 0 60px rgba(255, 255, 255, 0.15),
+    0 0 80px rgba(255, 255, 255, 0.1);
+}
+
+
+
+
+
