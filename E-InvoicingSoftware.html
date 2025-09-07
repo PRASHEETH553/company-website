@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>E-Invoicing Software</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Three.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+      position: relative;
+      background: #000; /* Solid fallback background */
+    }
+
+    /* 3D Canvas Background */
+    #three-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1; /* Behind all content */
+    }
+
+    /* Header Section Styles */
+    .bg-gradient-primary {
+      background: linear-gradient(180deg, rgba(0, 123, 255, 0.8), rgba(0, 212, 255, 0.8));
+      position: relative;
+      overflow: hidden;
+      border-bottom: 4px solid transparent;
+    }
+
+    .bg-gradient-primary::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(to right, #00ffcc, #00d4ff, #007bff, #00ffcc);
+      background-size: 200% 100%;
+      animation: borderMove 4s linear infinite;
+      transform: perspective(500px) translateZ(0);
+    }
+
+    @keyframes borderMove {
+      0% { background-position: 0% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    .section-header {
+      padding: 80px 0;
+      text-align: center;
+      position: relative;
+    }
+
+    .text-white { color: white; }
+
+    .page-header-content h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    }
+
+    /* 3D Animation for Breadcrumb Link */
+    .breadcrumb-item a.animated-link {
+      display: inline-block;
+      color: #00ffcc;
+      text-decoration: none;
+      transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+      animation: link3D 6s ease-in-out infinite;
+      transform-style: preserve-3d;
+    }
+
+    .breadcrumb-item a.animated-link:hover {
+      color: #00d4ff;
+      transform: scale(1.1) rotateX(10deg) translateZ(20px);
+      text-shadow: 2px 2px 10px rgba(0, 212, 255, 0.8);
+    }
+
+    @keyframes link3D {
+      0% {
+        transform: perspective(500px) rotateX(0deg) translateZ(0);
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+      }
+      50% {
+        transform: perspective(500px) rotateX(5deg) translateZ(50px);
+        text-shadow: 1px 1px 5px rgba(0, 255, 204, 0.5);
+      }
+      100% {
+        transform: perspective(500px) rotateX(0deg) translateZ(0);
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+      }
+    }
+
+    .breadcrumb {
+      background: transparent;
+      margin-bottom: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .breadcrumb-item {
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      margin: 0 10px;
+    }
+
+    .breadcrumb-item a {
+      color: #00ffcc;
+      text-decoration: none;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .breadcrumb-item a:hover {
+      text-decoration: underline;
+      transform: translateZ(10px) rotateX(10deg);
+      color: #00d4ff;
+    }
+
+    .breadcrumb-item.active a {
+      color: #fff;
+      animation: none;
+    }
+
+    .breadcrumb-text-light .breadcrumb-item::before {
+      color: #fff;
+      margin-right: 5px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    /* Main Content Section Styles */
+    .section {
+      padding: 50px 0;
+      margin: 0 15px;
+      background: rgba(0, 0, 0, 0.7); /* Increased opacity for contrast */
+      border-radius: 8px;
+      z-index: 1; /* Ensure content is above canvas */
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; }
+    .row { display: flex; flex-wrap: wrap; }
+    .col-sm-6 { flex: 0 0 50%; max-width: 50%; padding: 15px; box-sizing: border-box; }
+    .col-md-8 { flex: 0 0 66.666667%; max-width: 66.666667%; }
+    .col-lg-7 { flex: 0 0 58.333333%; max-width: 58.333333%; }
+    .justify-content-center { justify-content: center; }
+    .py-5 { padding: 3rem 0; }
+
+    img {
+      width: 380px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+      transition: transform 0.5s;
+    }
+
+    img:hover {
+      transform: scale(1.05);
+    }
+
+    h2, h4, li {
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+      color: #fff;
+    }
+
+    h2, h4, h5 {
+      margin-bottom: 20px;
+      padding-left: 15px;
+    }
+
+    h5 {
+      color: #00ffcc; /* Bright color for visibility */
+      font-size: 1.5rem; /* Ensure text is large enough */
+      font-weight: 600; /* Bold for prominence */
+      text-shadow: none; /* Remove shadow for clarity */
+    }
+
+    ul {
+      padding-left: 35px;
+      margin-top: 10px;
+      opacity: 0;
+      transform: translateY(50px) rotateX(45deg);
+      animation: ulFadeIn 1.2s ease-out forwards;
+      transform-origin: center;
+    }
+
+    ul li {
+      margin-bottom: 12px;
+      opacity: 0;
+      transform: translateX(-40px) scale(0.8);
+      animation: liFadeIn 0.6s ease-out forwards;
+      animation-delay: calc(0.2s * var(--i));
+      transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+    }
+
+    ul li:hover {
+      transform: translateX(10px) scale(1.05);
+      color: #00ffcc;
+      box-shadow: 0 2px 8px rgba(0, 255, 204, 0.5);
+    }
+
+    ul li.movement {
+      animation: liSlide 1.5s ease-in-out infinite alternate;
+    }
+
+    ul li:nth-child(1) { --i: 1; }
+    ul li:nth-child(2) { --i: 2; }
+    ul li:nth-child(3) { --i: 3; }
+    ul li:nth-child(4) { --i: 4; }
+    ul li:nth-child(5) { --i: 5; }
+    ul li:nth-child(6) { --i: 6; }
+    ul li:nth-child(7) { --i: 7; }
+    ul li:nth-child(8) { --i: 8; }
+    ul li:nth-child(9) { --i: 9; }
+
+    @keyframes ulFadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0deg);
+      }
+    }
+
+    @keyframes liFadeIn {
+      to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+      }
+    }
+
+    @keyframes liSlide {
+      0% { transform: translateX(-40px) scale(0.8); }
+      100% { transform: translateX(20px) scale(1.1); }
+    }
+
+    .animated-h2 span {
+      opacity: 0;
+      display: inline-block;
+      transform: scale(0.5);
+      animation: letterPop 0.5s ease forwards;
+      animation-delay: calc(0.1s * var(--char-index));
+      margin-right: 2px; /* Ensure natural spacing between characters */
+    }
+
+    .animated-h2.font-1 { font-family: 'Georgia', serif; }
+    .animated-h2.font-2 { font-family: 'Courier New', monospace; }
+    .animated-h2.font-3 { font-family: 'Verdana', sans-serif; }
+    .animated-h2.font-4 { font-family: 'Times New Roman', serif; }
+
+    .animated-h2.color-1 { color: #00ffcc; }
+    .animated-h2.color-2 { color: #007bff; }
+    .animated-h2.color-3 { color: #00d4ff; }
+    .animated-h2.color-4 { color: #00b7b7; }
+
+    @keyframes letterPop {
+      0% {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      60% {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .image-text-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 380px;
+    }
+
+    @media (max-width: 768px) {
+      .col-sm-6, .col-md-8, .col-lg-7 { flex: 0 0 100%; max-width: 100%; }
+      img { width: 100%; height: auto; }
+      .image-text-container { width: 100%; }
+      h2, h4, h5 { padding-left: 10px; }
+      ul { padding-left: 25px; }
+      .page-header-content h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 3D Background Canvas -->
+  <canvas id="three-canvas"></canvas>
+
+  <!-- Header Section -->
+  <section>
+    <div class="section-lg bg-gradient-primary text-white section-header">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-lg-7">
+            <div class="page-header-content text-center">
+              <h1>E-Invoicing Software</h1>
+              <nav aria-label="breadcrumb" class="d-flex justify-content-center">
+                <ol class="breadcrumb breadcrumb-transparent breadcrumb-text-light">
+                  <li class="breadcrumb-item"><a href="#">Products</a></li>
+                  <li class="breadcrumb-item active"><a href="#" class="animated-link">E-Invoicing Software</a></li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section -->
+  <section class="section section-lg">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <h2 id="animated-h2" class="animated-h2">E-Invoicing Software:</h2>
+          <h5 id="animated-h5"style="font-size: 1rem;">Streamlined Billing Solutions</h5>
+          <ul>
+            <li>Efficiency: Reduce manual data entry and errors in invoicing by digitalisation.</li>
+            <li>Cost Savings: Cut costs on printing, postage, and storage with e-invoicing.</li>
+            <li>Speed: Accelerate payment cycles with faster invoice delivery.</li>
+            <li>Accessibility: Access invoices anytime, anywhere with cloud solutions.</li>
+            <li>Security: Improve data security with encrypted electronic invoices.</li>
+            <li>Compliance: Meet tax and invoicing standards with built-in features.</li>
+            <li>Customization: Tailor invoice templates and branding to your company.</li>
+            <li>Analytics: Get insights into invoice status and payment trends.</li>
+            <li class="movement">Integration: Easily connect with accounting and ERP systems for a unified workflow.</li>
+          </ul>
+        </div>
+        <div class="col-sm-6" style="display: flex; flex-direction: column; align-items: center;">
+          <img src="gstin.jpg" alt="E-Invoicing Software">
+          <div class="text-white image-text-container">
+            <h4>E-Invoicing Software</h4>
+            <ul style="list-style: disc; padding-left: 20px;">
+              <li>Automated generation and delivery of electronic invoices.</li>
+              <li>Integration with accounting systems for seamless financial management.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script>
+    // Three.js 3D Animation
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('three-canvas'), alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+
+    // Camera position
+    camera.position.z = 50;
+
+    // Create floating invoice-like planes
+    const invoices = [];
+    const numInvoices = 20;
+    const geometry = new THREE.PlaneGeometry(5, 3);
+
+    // Create a simple texture with GST-related text
+    function createTextTexture(text) {
+      const canvas = document.createElement('canvas');
+      canvas.width = 256;
+      canvas.height = 128;
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#00ffcc';
+      ctx.font = '24px Poppins';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+      return new THREE.CanvasTexture(canvas);
+    }
+
+    const textures = [
+      createTextTexture('GST'),
+      createTextTexture('Invoice'),
+      createTextTexture('Tax'),
+      createTextTexture('₹')
+    ];
+
+    for (let i = 0; i < numInvoices; i++) {
+      const material = new THREE.MeshBasicMaterial({
+        map: textures[Math.floor(Math.random() * textures.length)],
+        side: THREE.DoubleSide,
+        transparent: true,
+        opacity: 0.7
+      });
+      const invoice = new THREE.Mesh(geometry, material);
+      invoice.position.set(
+        (Math.random() - 0.5) * 100,
+        (Math.random() - 0.5) * 100,
+        (Math.random() - 0.5) * 100
+      );
+      invoice.rotation.set(
+        Math.random() * Math.PI,
+        Math.random() * Math.PI,
+        Math.random() * Math.PI
+      );
+      invoice.userData = {
+        speed: Math.random() * 0.02 + 0.01,
+        rotationSpeed: Math.random() * 0.02 + 0.01
+      };
+      scene.add(invoice);
+      invoices.push(invoice);
+    }
+
+    // Animation loop
+    function animate() {
+      requestAnimationFrame(animate);
+      invoices.forEach(invoice => {
+        invoice.position.y += invoice.userData.speed;
+        invoice.rotation.x += invoice.userData.rotationSpeed * 0.5;
+        invoice.rotation.y += invoice.userData.rotationSpeed;
+        if (invoice.position.y > 50) invoice.position.y = -50;
+      });
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // Animated h2 text with font and color cycling
+    const h2Element = document.getElementById('animated-h2');
+    const h2Text = 'E-Invoicing Software:'; // Added space between E-Invoicing and Software
+    const fonts = ['font-1', 'font-2', 'font-3', 'font-4'];
+    const colors = ['color-1', 'color-2', 'color-3', 'color-4'];
+    let currentIndex = 0;
+
+    function updateH2() {
+      h2Element.textContent = '';
+      fonts.forEach(font => h2Element.classList.remove(font));
+      colors.forEach(color => h2Element.classList.remove(color));
+      h2Element.classList.add(fonts[currentIndex], colors[currentIndex]);
+      h2Text.split('').forEach((char, index) => {
+        const span = document.createElement('span');
+        span.textContent = char;
+        span.style.setProperty('--char-index', index);
+        h2Element.appendChild(span);
+      });
+      currentIndex = (currentIndex + 1) % fonts.length;
+    }
+
+    updateH2();
+    setInterval(updateH2, 3000);
+  </script>
+  <script>
+    (function(){
+      function c(){
+        var b = a.contentDocument || a.contentWindow.document;
+        if(b){
+          var d = b.createElement('script');
+          d.innerHTML = "window.__CF$cv$params={r:'937d0d10dd2bbcec',t:'MTc0NTkxMTM3NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+          b.getElementsByTagName('head')[0].appendChild(d)
+        }
+      }
+      if(document.body){
+        var a = document.createElement('iframe');
+        a.height = 1;
+        a.width = 1;
+        a.style.position = 'absolute';
+        a.style.top = 0;
+        a.style.left = 0;
+        a.style.border = 'none';
+        a.style.visibility = 'hidden';
+        document.body.appendChild(a);
+        if('loading' !== document.readyState) c();
+        else if(window.addEventListener) document.addEventListener('DOMContentLoaded', c);
+        else {
+          var e = document.onreadystatechange || function(){};
+          document.onreadystatechange = function(b){
+            e(b);
+            'loading' !== document.readyState && (document.onreadystatechange = e, c())
+          }
+        }
+      }
+    })();
+  </script>
+</body>
+</html>

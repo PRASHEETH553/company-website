@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jhaishna Technologies Pvt.Ltd</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="icon" type="image/x-icon" href="../static/Images/logo.png">
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="header-footer.css">
+</head>
+<body>
+    <header class="global-header">
+        <nav class="navbar" id="navbar">
+            <div class = "logoo">
+                <a href="home.html" class="logo">
+                <img src="logo.png" alt="Jhaishna Technology Logo" class="logo-img">
+                Jhaishna<span class="logo-sub">Technologies</span>
+                </a>
+            </div>
+            <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="{{ url_for('products') }}" class="dropbtn">Products</a>
+                    <div class="dropdown-content">
+                        <button class="close-dropdown"><i class="fas fa-times"></i></button>
+                        <div class="dropdown-container">
+                            <div class="dropdown-section left">
+                                <h3>Hardware & Software</h3>
+                                <a href="HRMS.html">HRMS</a>
+                                <a href="MXCloud_AI.html">MXCloud</a>
+                                <a href="LoanManagementSystem.html">Loan Management System</a>
+                                <a href="Fiber_optics.html">Fiber Optics</a>
+                                <a href="taskmanagement.html">Task Management</a>
+                            </div>
+                            <div class="dropdown-section right">
+    <h3>Digital Services</h3>
+    <a href="OracleCommunicationConsulting.html">Oracle Communication Consulting</a>
+    <a href="TailoredBilingPlatform.html">Tailored Billing Platform</a>
+    <a href="TailoredCRM.html">Tailored CRM System</a>
+    <a href="CloudMigration.html">Cloud Migration</a>
+    <a href="StaffAugmentation.html">Staff Automation</a>
+    <a href="DigitalBusinessTransformation.html">Digital Business</a>
+</div>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="career.html">Careers</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero-section">
+        <div class="background-video">
+            <video id="background-video" autoplay loop muted playsinline>
+                <source src="homepage_demo.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div> 
+        <div class="content-container"></div>
+    </section>
+
+    <section id="image-slider" class="image-slider-section">
+        <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+        <div class="slider-container">
+            <div class="slider">
+                <div class="slides">
+                    <div class="slide-image">
+                        <img src="OfficeSetup_HomePage-removebg-preview.png" alt="Jio Partnership">
+                    </div>
+                    <div class="slide-image">
+                        <img src="Images/digi (1).jpg" alt="Hathway Collaboration">
+                    </div>
+                    <div class="slide-image">
+                        <img src="equi (1).jpg" alt="Slide 3">
+                    </div>
+                    <div class="slide-image">
+                        <img src="hongkong.jpeg" alt="Slide 4">
+                    </div>
+                    <div class="slide-image">
+                        <img src="hathway.jpg" alt="Slide 5">
+                    </div>
+                    <div class="slide-image">
+                        <img src="oracle.jpg" alt="Slide 6">
+                    </div>
+                    <div class="slide-image">
+                        <img src="HKT.jpg" alt="Slide 7">
+                    </div>
+                    <div class="slide-image">
+                        <img src="rackspace.jpg" alt="Slide 8">
+                    </div>
+                    <div class="slide-image">
+                        <img src="OfficeSetup_HomePage-removebg-preview.png" alt="Jio Partnership">
+                    </div>
+                    <div class="slide-image">
+                        <img src="Images/digi (1).jpg" alt="Hathway Collaboration">
+                    </div>
+                    <div class="slide-image">
+                        <img src="equi (1).jpg" alt="Slide 3">
+                    </div>
+                    <div class="slide-image">
+                        <img src="hongkong.jpeg" alt="Slide 4">
+                    </div>
+                    <div class="slide-image">
+                        <img src="hathway.jpg" alt="Slide 5">
+                    </div>
+                    <div class="slide-image">
+                        <img src="oracle.jpg" alt="Slide 6">
+                    </div>
+                    <div class="slide-image">
+                        <img src="HKT.jpg" alt="Slide 7">
+                    </div>
+                    <div class="slide-image">
+                        <img src="rackspace.jpg" alt="Slide 8">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+    </section>
+
+    <section id="mission-vision" class="mission-vision-section">
+        <div class="mission-vision-container">
+            <div class="mission-vision-image">
+                <img 
+                    alt="Mission Vision Animation"
+                    id="mission-vision-image"
+                    data-mission="Rocket-unscreen.gif"
+                    data-vision="Target-unscreen.gif"
+                    data-values="Ourmission.gif">
+            </div>
+            <div class="mission-vision-content">
+                <div class="tabs">
+                    <button class="tab active" data-tab="mission">Our Mission</button>
+                    <button class="tab" data-tab="vision">Our Vision</button>
+                    <button class="tab" data-tab="values">Our Values</button>
+                </div>
+                <div class="tab-content active" id="mission">
+                    <h2>Simplify billing with precision</h2>
+                    <p>Our dedicated team excels in simplifying complex billing procedures, ensuring accuracy and efficiency in every transaction. Say goodbye to billing headaches with our tailored solutions.</p>
+                    <ul class="core-points">
+                        <li>Assuring clients on deliver results</li>
+                        <li>Identifying and plugging revenue leak</li>
+                        <li>Ensure maximum profitability for business</li>
+                        <li>Streamlining intricate billing processes</li>
+                    </ul>
+                </div>
+                <div class="tab-content" id="vision">
+                    <h2>Maximize Profitability, Minimize Revenue Leakage</h2>
+                    <p>At Jhaishna Technologies, we are dedicated to helping telecom companies thrive by reducing revenue leakage and maximizing profitability through our innovative billing revenue management services.</p>
+                    <ul class="core-points">
+                        <li>Assuring clients on deliver results</li>
+                        <li>Identifying and plugging revenue leak</li>
+                        <li>Ensure maximum profitability for business</li>
+                        <li>Streamlining intricate billing processes</li>
+                    </ul>
+                </div>
+                <div class="tab-content" id="values">
+                    <h2>Trusted Software Development Partner</h2>
+                    <p>With a strong foothold in India, Jhaishna has emerged as a reliable and innovative Software Development Company. We are committed to leveraging the latest technologies to meet your evolving business needs.</p>
+                    <ul class="core-points">
+                        <li>Assuring clients on deliver results</li>
+                        <li>Identifying and plugging revenue leak</li>
+                        <li>Ensure maximum profitability for business</li>
+                        <li>Streamlining intricate billing processes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="process-section">
+        <div class="container">
+            <div class="title">Working with Few Process it’s Simple</div>
+            <div class="subtitle">
+                Distinctively grow forward manufactured products and enthusiastically<br>
+                disseminate outsourcing customer service.
+            </div>
+            <div class="steps">
+                <svg class="connector" width="100%" height="40" preserveAspectRatio="none">
+                    <path d="M0,20 Q100,0 200,20 T400,20 T600,20 T800,20" stroke="#ccc" stroke-width="2" stroke-dasharray="6,6" fill="none"/>
+                </svg>
+                <div class="step">
+                    <div class="icon-circle">💡</div>
+                    <div class="step-title">Create Design</div>
+                    <div class="step-description">
+                       Begin with a detailed design outlining project scope, objectives, and deliverables to align stakeholders.
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="icon-circle">📋</div>
+                    <div class="step-title">Develop Prototype</div>
+                    <div class="step-description">
+                        Build a prototype for visualization and feedback before full-scale development.
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="icon-circle">📅</div>
+                    <div class="step-title">Finalize Plans</div>
+                    <div class="step-description">
+                        Approve design and prototype, then detail schedule, resources, and logistics.
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="icon-circle">🚀</div>
+                    <div class="step-title">Launch Project</div>
+                    <div class="step-description">
+                        Execute per timeline and objectives, maintaining open communication for adjustments.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gradient-animation" class="gradient-animation-section">
+      <!-- TOP WAVE -->
+      <div class="wave-container top-wave">
+        <svg class="wave" viewBox="0 0 1440 320" preserveAspectRatio="none">
+          <path fill="transparent"
+            d="M0,160 C480,240 960,80 1440,160 L1440,0 L0,0 Z"></path>
+        </svg>
+        <svg class="wave wave2" viewBox="0 0 1440 320" preserveAspectRatio="none">
+          <path fill="transparent"
+            d="M0,160 C480,240 960,80 1440,160 L1440,0 L0,0 Z"></path>
+        </svg>
+      </div>
+
+      <div class="wave-top animated-wave">
+        <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+          <path class="wave-path"
+            fill="transparent"
+            d="M0,224 C360,160 1080,320 1440,160 L1440,0 L0,0 Z">
+            <animate attributeName="d" dur="8s" repeatCount="indefinite"
+              values="
+                M0,224 C360,160 1080,320 1440,160 L1440,0 L0,0 Z;
+                M0,200 C400,180 1040,280 1440,200 L1440,0 L0,0 Z;
+                M0,224 C360,160 1080,320 1440,160 L1440,0 L0,0 Z
+              " />
+          </path>
+        </svg>
+      </div>
+
+      <div class="gradient-content"></div>
+
+      <div class="wave-bottom animated-wave">
+        <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+          <path class="wave-path"
+            fill="transparent"
+            d="M0,160 C360,320 1080,160 1440,320 L1440,0 L0,0 Z">
+            <animate attributeName="d" dur="8s" repeatCount="indefinite"
+              values="
+                M0,160 C360,320 1080,160 1440,320 L1440,0 L0,0 Z;
+                M0,180 C400,300 1040,200 1440,280 L1440,0 L0,0 Z;
+                M0,160 C360,320 1080,160 1440,320 L1440,0 L0,0 Z
+              " />
+          </path>
+        </svg>
+      </div>
+      <!-- BOTTOM WAVE -->
+      <div class="wave-container bottom-wave">
+        <svg class="wave" viewBox="0 0 1440 320" preserveAspectRatio="none">
+          <path fill="transparent"
+            d="M0,160 C480,240 960,80 1440,160 L1440,320 L0,320 Z"></path>
+        </svg>
+        <svg class="wave wave2" viewBox="0 0 1440 320" preserveAspectRatio="none">
+          <path fill="transparent"
+            d="M0,160 C480,240 960,80 1440,160 L1440,320 L0,320 Z"></path>
+        </svg>
+      </div>
+    </section>
+
+    <section id="blogs" class="blogs-section">
+        <h2 class="section-title">Our Latest Blogs</h2>
+        <div class="blog-gallery">
+            <div class="blog-row">
+                <div class="blog-container">
+                    <div class="image-container">
+                        <img src="achieve.jpg" alt="Jhaishna: Emerging Leader in India's IT Sector">
+                    </div>
+                    <div class="blog-content">
+                        <h3>Jhaishna: Emerging Leader in India's IT Sector</h3>
+                        <p>Jhaishna win the fastest growing Indian Company Leadership Award.</p>
+                        <p class="read-more"><a href="emerging_leader.html">Read More</a></p>
+                    </div>
+                </div>
+                <div class="blog-container">
+                    <div class="image-container">
+                        <img src="PowerOfMES.jpg" alt="The Power of MES">
+                    </div>
+                    <div class="blog-content">
+                        <h3>The Power of MES</h3>
+                        <p>Optimize production processes with our MES for real-time monitoring and control.</p>
+                        <p class="read-more"><a href="mes_power.html">Read More</a></p>
+                    </div>
+                </div>
+                <div class="blog-container">
+                    <div class="image-container">
+                        <img src="InnvotiveSolutions.png" alt="Exploring New Horizons">
+                    </div>
+                    <div class="blog-content">
+                        <h3>Exploring New Horizons</h3>
+                        <p>Discover the latest trends in technology with Jhaishna Technologies.</p>
+                        <p class="read-more"><a href="our_vision.html">Read More</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cta" class="cta-section">
+        <div class="cta-container">
+            <h2>Ready to Pursue Excellence?</h2>
+            <a href="contact.html" class="cta-button">Discuss Projects</a>
+        </div>
+    </section>
+
+    <footer class="global-footer">
+    <div class="footer-content">
+        <div class="footer-logo">
+            <div class="footer-logo-container">
+                <img src="logo.png" alt="Jhainsha Technology Logo" class="footer-logo-img">
+                <span>Jhaishna Technologies</span>
+            </div>
+            <p>Innovative solutions for a digital world</p>
+            <div class="social-links">
+                <a href="#" class="social-icon glow-effect"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon glow-effect"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon glow-effect"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-icon glow-effect"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-column">
+            <h3>Quick Links</h3>    
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="#services" class="glow-effect">Services</a></li>
+                <li><a href="#clients" class="glow-effect">Clients</a></li>
+                <li><a href="contact.html" class="glow-effect">Contact Us</a></li>
+                <li><a href="career.html" class="glow-effect">Careers</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Contact Us</h3>
+            <p class="glow-effect">Email: info@jhainsha.com</p>
+            <p class="glow-effect">Phone: +91 866 123 4567</p>
+            <p class="glow-effect">Global Headquarters: Tech Park, MG Road, Vijayawada, India</p>
+            <div class="newsletter-form">
+                <input type="email" placeholder="Enter your email" class="glow-effect">
+                <button class="subscribe-button glow-effect">Subscribe</button>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2025 Jhainsha Technologies. All rights reserved.</p>
+    </div>
+</footer>
+
+    <script src="home.js"></script>
+    <script src="header-footer.js"></script>
+</body>
+</html>

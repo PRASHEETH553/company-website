@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jhaishna Technologies Pvt.Ltd - HRMS</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='Images/logo.png') }}">
+    <!-- Custom CSS -->
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/hrms.css') }}"> -->
+     <style>
+        /* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #E8F5E9; /* Light green */
+    color: #355E3B; /* Dark forest green */
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+section {
+    padding: 80px 0;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(to bottom, rgba(232, 245, 233, 0.7), rgba(200, 230, 201, 0.9)), url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    margin-top: 80px;
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.hero h1 {
+    font-size: 46px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    color: #355E3B;
+}
+
+.hero h1 span {
+    color: #F28C82; /* Warm coral */
+    position: relative;
+}
+
+.hero h1 span::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #F28C82, #F4D03F);
+    animation: underline 2s infinite;
+}
+
+@keyframes underline {
+    0% { width: 0; }
+    50% { width: 100%; }
+    100% { width: 0; }
+}
+
+.hero p {
+    font-size: 18px;
+    color: #6B8E7A; /* Muted sage green */
+    margin-bottom: 30px;
+    max-width: 700px;
+}
+
+.btn {
+    display: inline-block;
+    background: #F28C82; /* Warm coral */
+    color: #FFFFFF;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 0 4px 15px rgba(242, 140, 130, 0.3);
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(45deg, #F4D03F, #F28C82);
+    transition: all 0.5s ease;
+    z-index: -1;
+}
+
+.btn:hover::before {
+    width: 100%;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(242, 140, 130, 0.5);
+}
+
+/* Overview Section */
+.overview {
+    background-color: #C8E6C9; /* Very light green */
+    padding: 100px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 36px;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 15px;
+    color: #355E3B;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to right, #F28C82, #F4D03F);
+}
+
+.overview-text {
+    font-size: 18px;
+    color: #6B8E7A;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px;
+}
+
+.overview-stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    padding: 20px;
+    width: calc(33.333% - 20px);
+    min-width: 200px;
+    text-align: center;
+    border: 1px solid rgba(200, 230, 201, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.stat-icon {
+    font-size: 40px;
+    color: #F28C82;
+    margin-bottom: 15px;
+}
+
+.stat-card h3 {
+    font-size: 24px;
+    color: #355E3B;
+    margin-bottom: 10px;
+}
+
+.stat-card p {
+    color: #6B8E7A;
+    font-size: 16px;
+}
+
+/* Features Section */
+.features {
+    background-color: #DCEDC8; /* Light lime green */
+    padding: 100px 0;
+}
+
+.features-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    padding: 30px;
+    width: calc(25% - 22.5px);
+    min-width: 250px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(200, 230, 201, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.feature-icon {
+    font-size: 48px;
+    color: #F28C82;
+    margin-bottom: 20px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.feature-card h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #355E3B;
+}
+
+.feature-card p {
+    color: #6B8E7A;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+/* Benefits Section */
+.benefits {
+    background: linear-gradient(to bottom, #E8F5E9, #C8E6C9);
+    padding: 100px 0;
+}
+
+.benefits-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.benefit-card {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    padding: 30px;
+    width: calc(33.333% - 20px);
+    min-width: 250px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(200, 230, 201, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.benefit-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.benefit-icon {
+    font-size: 48px;
+    color: #F28C82;
+    margin-bottom: 20px;
+    animation: pulse 2s infinite;
+}
+
+.benefit-card h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #355E3B;
+}
+
+.benefit-card p {
+    color: #6B8E7A;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+/* Call to Action Section */
+.cta {
+    background-color: #C8E6C9;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.cta-text {
+    font-size: 18px;
+    color: #6B8E7A;
+    max-width: 700px;
+    margin: 0 auto 30px;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.animate-delay-1 {
+    animation-delay: 0.1s;
+}
+
+.animate-delay-2 {
+    animation-delay: 0.2s;
+}
+
+.animate-delay-3 {
+    animation-delay: 0.3s;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .section-title {
+        font-size: 32px;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .feature-card, .benefit-card, .stat-card {
+        width: calc(50% - 15px);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .feature-card, .benefit-card, .stat-card {
+        width: 100%;
+    }
+}
+     </style>
+    <link rel="stylesheet" href="header-footer.css">
+    <!-- Scripts -->
+    <!-- <script src="{{ url_for('static', filename='js/hrms.js') }}" defer></script> -->
+     <script>
+        // Scroll animation for elements
+document.addEventListener('DOMContentLoaded', function() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+            }
+        });
+    }, {
+        threshold: 0.1 // Trigger when 10% of the element is visible
+    });
+
+    // Observe all elements with the 'animate' class
+    document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+});
+     </script>
+    <script src="header-footer.js"></script>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="global-header">
+        <nav class="navbar" id="navbar">
+            <div class = "logoo">
+                <a href="home.html" class="logo">
+                <img src="logo.png" alt="Jhaishna Technology Logo" class="logo-img">
+                Jhaishna<span class="logo-sub">Technologies</span>
+                </a>
+            </div>
+            <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="{{ url_for('products') }}" class="dropbtn">Products</a>
+                    <div class="dropdown-content">
+                        <button class="close-dropdown"><i class="fas fa-times"></i></button>
+                        <div class="dropdown-container">
+                            <div class="dropdown-section left">
+                                <h3>Hardware & Software</h3>
+                                <a href="HRMS.html">HRMS</a>
+                                <a href="MXCloud_AI.html">MXCloud</a>
+                                <a href="LoanManagementSystem.html">Loan Management System</a>
+                                <a href="Fiber_optics.html">Fiber Optics</a>
+                                <a href="taskmanagement.html">Task Management</a>
+                            </div>
+                            <div class="dropdown-section right">
+    <h3>Digital Services</h3>
+    <a href="OracleCommunicationConsulting.html">Oracle Communication Consulting</a>
+    <a href="TailoredBilingPlatform.html">Tailored Billing Platform</a>
+    <a href="TailoredCRM.html">Tailored CRM System</a>
+    <a href="CloudMigration.html">Cloud Migration</a>
+    <a href="StaffAugmentation.html">Staff Automation</a>
+    <a href="DigitalBusinessTransformation.html">Digital Business</a>
+</div>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="career.html">Careers</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <video class="background-video" autoplay loop muted playsinline>
+            <source src="background.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="hero-content">
+            <h1 class="animate">Human Resource <span>Management System</span></h1>
+            <p class="animate animate-delay-1">
+                Streamline your HR processes with our cutting-edge HRMS, designed to empower your workforce and boost organizational efficiency.
+            </p>
+            <a href="#features" class="btn animate animate-delay-2">Explore Features</a>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="overview" id="overview">
+        <div class="container">
+            <h2 class="section-title">Why Choose Our HRMS?</h2>
+            <p class="overview-text animate">
+                Our HRMS is a comprehensive solution tailored to simplify HR operations, enhance employee engagement, and drive business success. With intuitive features and seamless integration, it’s the perfect tool for modern businesses.
+            </p>
+            <div class="overview-stats">
+                <div class="stat-card animate animate-delay-1">
+                    <i class="fas fa-users stat-icon"></i>
+                    <h3>50,000+</h3>
+                    <p>Active Users</p>
+                </div>
+                <div class="stat-card animate animate-delay-2">
+                    <i class="fas fa-building stat-icon"></i>
+                    <h3>1,000+</h3>
+                    <p>Organizations</p>
+                </div>
+                <div class="stat-card animate animate-delay-3">
+                    <i class="fas fa-star stat-icon"></i>
+                    <h3>4.8/5</h3>
+                    <p>User Rating</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Key Features</h2>
+            <div class="features-container">
+                <div class="feature-card animate">
+                    <div class="feature-icon"><i class="fas fa-user-check"></i></div>
+                    <h3>Employee Management</h3>
+                    <p>Centralize employee data, track performance, and manage onboarding seamlessly.</p>
+                </div>
+                <div class="feature-card animate animate-delay-1">
+                    <div class="feature-icon"><i class="fas fa-money-check-alt"></i></div>
+                    <h3>Payroll Automation</h3>
+                    <p>Automate payroll calculations, tax deductions, and compliance reporting.</p>
+                </div>
+                <div class="feature-card animate animate-delay-2">
+                    <div class="feature-icon"><i class="fas fa-clock"></i></div>
+                    <h3>Time & Attendance</h3>
+                    <p>Track employee hours, manage leaves, and generate attendance reports effortlessly.</p>
+                </div>
+                <div class="feature-card animate animate-delay-3">
+                    <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Analytics & Reporting</h3>
+                    <p>Gain insights with customizable dashboards and real-time HR analytics.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits" id="benefits">
+        <div class="container">
+            <h2 class="section-title">Benefits of Our HRMS</h2>
+            <div class="benefits-container">
+                <div class="benefit-card animate">
+                    <div class="benefit-icon"><i class="fas fa-rocket"></i></div>
+                    <h3>Increased Efficiency</h3>
+                    <p>Automate repetitive tasks and focus on strategic HR initiatives.</p>
+                </div>
+                <div class="benefit-card animate animate-delay-1">
+                    <div class="benefit-icon"><i class="fas fa-user-friends"></i></div>
+                    <h3>Enhanced Engagement</h3>
+                    <p>Empower employees with self-service portals and real-time feedback.</p>
+                </div>
+                <div class="benefit-card animate animate-delay-2">
+                    <div class="benefit-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Data Security</h3>
+                    <p>Protect sensitive HR data with robust encryption and compliance standards.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta" id="cta">
+        <div class="container">
+            <h2 class="section-title">Ready to Transform Your HR?</h2>
+            <p class="cta-text animate">
+                Experience the power of our HRMS. Request a demo today and see how we can elevate your HR operations.
+            </p>
+            <a href="contact.html" class="btn animate animate-delay-1">Request a Demo</a>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="global-footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <div class="footer-logo-container">
+                    <img src="logo.png" alt="Jhainsha Technology Logo" class="footer-logo-img">
+                    <span>Jhainsha Technologies</span>
+                </div>
+                <p>Innovative solutions for a digital world</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon glow-effect"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon glow-effect"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon glow-effect"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon glow-effect"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="products.html" class="glow-effect">Products</a></li>
+                    <li><a href="career.html" class="glow-effect">Careers</a></li>
+                    <li><a href="blog.html" class="glow-effect">Blog</a></li>
+                    <li><a href="about.html" class="glow-effect">About Us</a></li>
+                    <li><a href="contact.html" class="glow-effect">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <p class="glow-effect">Email: kakiletiprasheeth3@gmail.com</p>
+                <p class="glow-effect">Phone: +91 8522 8342 50</p>
+                <p class="glow-effect">Global Headquarters: Tech Park, MG Road, Vijayawada, India</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" class="glow-effect">
+                    <button class="subscribe-button glow-effect">Subscribe</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Jhainsha Technologies. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
