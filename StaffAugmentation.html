@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Augmentation - Digital Services</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="logo.png">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #FFFFFF; /* White background */
+            color: #355E3B; /* Dark forest green */
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.7), rgba(245, 245, 245, 0.9)), url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 46px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            color: #355E3B;
+        }
+
+        .hero h1 span {
+            color: #F28C82; /* Warm coral */
+            position: relative;
+        }
+
+        .hero h1 span::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #F28C82, #F4D03F);
+            animation: underline 2s infinite;
+        }
+
+        @keyframes underline {
+            0% { width: 0; }
+            50% { width: 100%; }
+            100% { width: 0; }
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #6B8E7A; /* Muted sage green */
+            margin-bottom: 30px;
+            max-width: 700px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #F28C82; /* Warm coral */
+            color: #FFFFFF;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 4px 15px rgba(242, 140, 130, 0.3);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(45deg, #F4D03F, #F28C82);
+            transition: all 0.5s ease;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            width: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(242, 140, 130, 0.5);
+        }
+
+        /* Overview Section */
+        .overview {
+            background-color: #F5F5F5; /* Light gray background */
+            padding: 100px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .overview-content {
+            max-width: 550px;
+            padding-right: 20px;
+        }
+
+        .overview-image {
+            max-width: 400px;
+            height: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 36px;
+            text-transform: uppercase;
+            position: relative;
+            padding-bottom: 15px;
+            color: #355E3B;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #F28C82, #F4D03F);
+        }
+
+        .overview-text {
+            font-size: 18px;
+            color: #6B8E7A;
+            margin-bottom: 20px;
+        }
+
+        /* Call to Action Section */
+        .cta {
+            background-color: #E0E0E0; /* Light gray */
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta-text {
+            font-size: 18px;
+            color: #6B8E7A;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .animate-delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .animate-delay-2 {
+            animation-delay: 0.2s;
+        }
+
+        .animate-delay-3 {
+            animation-delay: 0.3s;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .section-title {
+                font-size: 32px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .overview {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .overview-content {
+                padding-right: 0;
+                max-width: 100%;
+            }
+
+            .overview-image {
+                margin-top: 20px;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="header-footer.css">
+    <script>
+        // Scroll animation for elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+    <script src="header-footer.js"></script>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="global-header">
+        <nav class="navbar" id="navbar">
+            <div class = "logoo">
+                <a href="home.html" class="logo">
+                <img src="logo.png" alt="Jhaishna Technology Logo" class="logo-img">
+                Jhaishna<span class="logo-sub">Technologies</span>
+                </a>
+            </div>
+            <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="{{ url_for('products') }}" class="dropbtn">Products</a>
+                    <div class="dropdown-content">
+                        <button class="close-dropdown"><i class="fas fa-times"></i></button>
+                        <div class="dropdown-container">
+                            <div class="dropdown-section left">
+                                <h3>Hardware & Software</h3>
+                                <a href="HRMS.html">HRMS</a>
+                                <a href="MXCloud_AI.html">MXCloud</a>
+                                <a href="LoanManagementSystem.html">Loan Management System</a>
+                                <a href="Fiber_optics.html">Fiber Optics</a>
+                                <a href="taskmanagement.html">Task Management</a>
+                            </div>
+                            <div class="dropdown-section right">
+    <h3>Digital Services</h3>
+    <a href="OracleCommunicationConsulting.html">Oracle Communication Consulting</a>
+    <a href="TailoredBilingPlatform.html">Tailored Billing Platform</a>
+    <a href="TailoredCRM.html">Tailored CRM System</a>
+    <a href="CloudMigration.html">Cloud Migration</a>
+    <a href="StaffAugmentation.html">Staff Automation</a>
+    <a href="DigitalBusinessTransformation.html">Digital Business</a>
+</div>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="career.html">Careers</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="animate">Staff <span>Augmentation</span></h1>
+            <p class="animate animate-delay-1">
+                Enhance your team with flexible, skilled resources to accelerate your projects.
+            </p>
+            <a href="#overview" class="btn animate animate-delay-2">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="overview" id="overview">
+        <div class="container">
+            <div class="overview-content animate">
+                <h2 class="section-title">Staff Augmentation</h2>
+                <p class="overview-text">
+                    <strong>Flexible Resource Allocation:</strong> Scale your team up or down quickly according to project requirements.<br>
+                    <strong>Access to Specialized Skills:</strong> Gain access to a diverse pool of skilled professionals with expertise in various technologies.<br>
+                    <strong>Cost-Efficiency:</strong> Avoid long-term hiring costs and overhead expenses associated with full-time employees.<br>
+                    <strong>Fast Time-to-Market:</strong> Expedite project timelines by quickly onboarding qualified resources.<br>
+                    <strong>Seamless Integration:</strong> Ensure seamless integration of augmented staff with your existing team and processes.<br>
+                    <strong>Reduced Risk:</strong> Mitigate risks associated with skill gaps or shortages by supplementing your team with experienced professionals.<br>
+                    <strong>Scalability:</strong> Adapt to changing project requirements and business needs without disrupting operations.<br>
+                    <strong>Focus on Core Competencies:</strong> Allow your core team to focus on strategic initiatives while augmented staff handle routine tasks.<br>
+                    <strong>Quality Assurance:</strong> Ensure high-quality deliverables through the expertise and experience of augmented resources.
+                </p>
+                <p class="overview-text">
+                    <strong>Specialized Skills:</strong> Access to specialized skills and expertise.<br>
+                    <strong>Flexible Scaling:</strong> Flexible resource scaling according to project requirements.
+                </p>
+            </div>
+            <img src="staff_augmentation_image.jpg" alt="Staff Augmentation Image" class="overview-image animate animate-delay-1">
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta" id="cta">
+        <div class="container">
+            <h2 class="section-title">Need Expert Staff Support?</h2>
+            <p class="cta-text animate">
+                Boost your projects with our staff augmentation services. Contact us today!
+            </p>
+            <a href="contact.html" class="btn animate animate-delay-1">Get in Touch</a>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="global-footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <div class="footer-logo-container">
+                    <img src="logo.png" alt="Jhainsha Technology Logo" class="footer-logo-img">
+                    <span>Jhainsha Technologies</span>
+                </div>
+                <p>Innovative solutions for a digital world</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon glow-effect"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon glow-effect"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon glow-effect"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon glow-effect"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="products.html" class="glow-effect">Products</a></li>
+                    <li><a href="career.html" class="glow-effect">Careers</a></li>
+                    <li><a href="blog.html" class="glow-effect">Blog</a></li>
+                    <li><a href="about.html" class="glow-effect">About Us</a></li>
+                    <li><a href="contact.html" class="glow-effect">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <p class="glow-effect">Email: kakiletiprasheeth3@gmail.com</p>
+                <p class="glow-effect">Phone: +91 8522 8341 50</p>
+                <p class="glow-effect">Global Headquarters: Tech Park, MG Road, Vijayawada, India</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" class="glow-effect">
+                    <button class="subscribe-button glow-effect">Subscribe</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Jhainsha Technologies. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
