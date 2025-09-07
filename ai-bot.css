@@ -1,0 +1,334 @@
+/* --- Search Container Styles --- */
+/* template/ai-bot.css */
+
+/* --- Search Container Styles --- */
+#search-container {
+    position: fixed;
+    background-color: #f0f8ff;
+    border: 1px solid #ADD8E6;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    z-index: 1002;
+    display: none; /* <<<< CRITICAL: Start with display: none */
+    min-width: 250px;
+    max-width: 90vw;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Simpler transition */
+    /* No top/left transition needed if set before becoming visible */
+    opacity: 0;
+    /* transform: translate(-50%, -50%); /* Keep this for centering on the JS-set top/left */
+    /* Position will be set by JS right before making it visible */
+
+    /* Flex properties will be applied when .visible is added and display becomes flex */
+    align-items: center; /* For when display:flex is active */
+    gap: 6px;          /* For when display:flex is active */
+}
+
+#search-container.visible {
+    display: flex !important; /* <<<< IMPORTANT: Change display to flex when visible */
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1); /* Ensure it's scaled to normal */
+    /* visibility: visible; /* Not strictly needed if display is managed */
+}
+#search-input {
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 100px;
+    padding: 8px 10px;
+    border: 1px solid #B0C4DE;
+    border-radius: 4px;
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 0.9em;
+    box-sizing: border-box;
+}
+#search-button,
+#close-search-button {
+    padding: 8px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #000000;
+    font-weight: bold;
+    font-size: 0.85em;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+#search-button { background-color: #90EE90; }
+#search-button:hover { background-color: #7CCD7C; }
+#close-search-button { background-color: #FFA07A; }
+#close-search-button:hover { background-color: #FA8072; }
+
+/* --- AI Assistant Bot Styles (Resized) --- */
+#ai-assistant {
+    width: 130px; /* Bot's container width */
+    height: 215px; /* Bot's container height */
+    position: fixed;
+    bottom: 30px; /* Fixed distance from bottom */
+    right: 30px; /* Fixed distance from right */
+    z-index: 1000; /* Ensure it's above most content but below modals/search */
+    pointer-events: none; /* Allow clicks to pass through the main container */
+}
+
+/* Speech bubble needs to be clickable */
+#bot-speech-bubble {
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.bot-main-body {
+    position: relative;
+    width: 100%;
+    height: 175px; /* Height of the actual bot visual without hologram */
+    animation: subtle-float 5s ease-in-out infinite;
+    transform-style: preserve-3d;
+    pointer-events: none;
+}
+
+.bot-head {
+    width: 75px; height: 65px;
+    background: linear-gradient(to bottom, #E0E0E0, #BDBDBD);
+    border-radius: 50% 50% 40% 40% / 60% 60% 40% 40%;
+    position: absolute; top: 0px; left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid #cccccc;
+    box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.6), inset 0 -3px 5px rgba(0, 0, 0, 0.15), 0 5px 15px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.bot-visor {
+    width: 80%; height: 19px;
+    background-color: #444; border: 2px solid #666;
+    border-radius: 10px; position: absolute;
+    top: 19px; left: 50%; transform: translateX(-50%);
+    overflow: hidden; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+.visor-light {
+    width: 11px; height: 100%; background-color: #87CEEB;
+    box-shadow: 0 0 5px #87CEEB, 0 0 10px #87CEEB;
+    position: absolute; top: 0; left: -11px;
+    animation: visor-scan 4s linear infinite;
+    animation-delay: 1s;
+}
+.visor-reflection {
+    position: absolute; top: 1px; left: 10%;
+    width: 40%; height: 4px;
+    background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.5), rgba(255,255,255,0));
+    border-radius: 50%; transform: skewX(-20deg); opacity: 0.8;
+}
+
+.head-antenna {
+    width: 5px; height: 16px; background-color: #B0B0B0;
+    position: absolute; top: -8px;
+    border-radius: 2px 2px 0 0;
+}
+.head-antenna::after {
+    content: ''; width: 6px; height: 6px;
+    background-color: #FF6347; border-radius: 50%;
+    position: absolute; top: -5px; left: -0.5px;
+    animation: antenna-blink 2s infinite;
+}
+.head-antenna.left { left: 16px; transform: rotate(-15deg); }
+.head-antenna.right { right: 16px; transform: rotate(15deg); animation-delay: 1s; }
+
+.bot-mouth {
+    width: 26px; height: 5px; background-color: #666;
+    border-radius: 3px; position: absolute;
+    bottom: 10px; left: 50%; transform: translateX(-50%);
+    transition: all 0.3s ease;
+}
+.bot-neck {
+    width: 16px; height: 10px; background-color: #B0B0B0;
+    position: absolute; top: 58px; left: 50%;
+    transform: translateX(-50%); z-index: 9;
+}
+.bot-torso {
+    width: 84px; height: 63px;
+    background: linear-gradient(to bottom, #C0C0C0, #A9A9A9);
+    border-radius: 16px 16px 10px 10px;
+    position: absolute; top: 63px; left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid #D3D3D3;
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.3), inset 0 -3px 5px rgba(0, 0, 0, 0.1);
+    z-index: 8;
+}
+.torso-panel {
+    width: 32px; height: 21px; background-color: rgba(0, 0, 0, 0.1);
+    border: 1px solid #ADD8E6; border-radius: 5px;
+    box-shadow: 0 0 4px #ADD8E6 inset;
+    position: absolute; top: 10px; left: 50%;
+    transform: translateX(-50%); overflow: hidden;
+}
+.panel-light {
+    width: 100%; height: 100%;
+    background: radial-gradient(ellipse at center, rgba(135, 206, 235, 0.5) 0%, rgba(135, 206, 235, 0) 70%);
+    opacity: 0; transition: opacity 0.3s ease-in-out;
+}
+
+.bot-arm {
+    width: 19px; height: 58px; position: absolute;
+    top: 68px; z-index: 7;
+    transform-origin: top center;
+    background: linear-gradient(to bottom, #D0D0D0, #A0A0A0);
+    border-radius: 9px; box-shadow: 1px 1px 2px rgba(0,0,0,0.15);
+    transition: transform 0.5s ease-out;
+}
+.arm-right { right: 10px; transform: rotate(15deg); }
+.arm-left { left: 10px; transform: rotate(-15deg); }
+.arm-joint {
+    width: 23px; height: 23px; background-color: #C0C0C0;
+    border-radius: 50%; position: absolute;
+    top: -5px; left: -2px;
+    border: 1px solid #DCDCDC;
+}
+.bot-hand {
+    width: 23px; height: 23px;
+    background: linear-gradient(to bottom, #F5F5F5, #DCDCDC);
+    border-radius: 50% 50% 40% 40%;
+    position: absolute; bottom: -4px; left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid #E0E0E0;
+    box-shadow: inset 0 1px 2px rgba(255,255,255,0.8), 0 1px 1px rgba(0,0,0,0.1);
+    z-index: 8;
+}
+.bot-base {
+    width: 52px; height: 21px; background: #B0C4DE;
+    border-radius: 0 0 10px 10px; position: absolute;
+    bottom: 0; left: 50%; transform: translateX(-50%);
+    z-index: 6; border: 1px solid #A9A9A9; border-top: none;
+}
+.hologram-projector {
+    width: 95px; height: 42px; position: absolute;
+    bottom: -26px;
+    left: 50%; transform-origin: center bottom;
+    transform: translateX(-50%) perspective(150px) rotateX(80deg);
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgb(0, 183, 255) 0%, rgba(135, 206, 235, 0.15) 50%, rgb(0, 183, 255) 75%);
+    filter: blur(2px);
+    animation: hologram-flicker-base 4s infinite alternate ease-in-out;
+    overflow: hidden; z-index: 5;
+}
+.holo-scanlines {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient( rgba(220, 240, 255, 0.1) 50%, rgba(180, 220, 240, 0.15) 50% );
+    background-size: 100% 3px;
+    opacity: 0.6;
+    animation: scanline-move-holo 6s linear infinite;
+    border-radius: 50%;
+}
+
+/* --- Speech Bubble --- */
+.speech-bubble {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    background-color: #E0F7FA;
+    border: 1px solid #B3E5FC;
+    color: #000000;
+    padding: 8px 15px; /* Adjusted padding */
+    border-radius: 12px;
+    font-size: 0.9em;
+    max-width: 220px;    /* Increased max-width */
+    min-width: 100px;   /* Optional min-width */
+    text-align: center;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0s linear 0s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 11;
+    pointer-events: auto;
+    cursor: pointer;
+    white-space: normal;
+}
+.speech-bubble.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    cursor: default;
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 8px 6px 0 6px;
+    border-style: solid;
+    border-color: #E0F7FA transparent transparent transparent;
+}
+
+/* --- Animations --- */
+@keyframes subtle-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+@keyframes visor-scan {
+    0% { left: -11px; opacity: 1; }
+    49.99% { left: calc(100% - 11px); opacity: 1; }
+    50%    { left: calc(100% - 11px); opacity: 0; }
+    50.01% { left: -11px; opacity: 0; }
+    51%    { left: -11px; opacity: 1; }
+    100%   { left: -11px; opacity: 1; }
+}
+@keyframes antenna-blink {
+    0%, 48%, 100% { background-color: #FF6347; }
+    50% { background-color: #FFA500; }
+}
+@keyframes hologram-flicker-base {
+    0%, 100% { opacity: 0.5; filter: blur(2px); }
+    50% { opacity: 0.8; filter: blur(1px); transform: translateX(-50%) perspective(150px) rotateX(80deg) scaleY(1.1); }
+    25% { opacity: 0.6; }
+    75% { opacity: 0.7; }
+}
+@keyframes scanline-move-holo {
+    0% { background-position: 0 0; }
+    to { background-position: 0 -20px; }
+}
+@keyframes head-nod {
+    0% { transform: translateX(-50%) rotateX(0deg); }
+    50% { transform: translateX(-50%) rotateX(15deg); }
+    100% { transform: translateX(-50%) rotateX(0deg); }
+}
+.bot-head.nod { animation: head-nod 0.5s ease-in-out 1; }
+
+@keyframes head-tilt {
+    0% { transform: translateX(-50%) rotateZ(0deg); }
+    30% { transform: translateX(-50%) rotateZ(-7deg); }
+    70% { transform: translateX(-50%) rotateZ(7deg); }
+    100% { transform: translateX(-50%) rotateZ(0deg); }
+}
+.bot-head.thinking { animation: head-tilt 1.3s ease-in-out infinite alternate; }
+
+@keyframes greeting-wave {
+    0% { transform: rotate(15deg); }
+    15% { transform: rotate(110deg); }
+    30% { transform: rotate(85deg); }
+    45% { transform: rotate(110deg); }
+    60% { transform: rotate(85deg); }
+    75% { transform: rotate(110deg); }
+    100% { transform: rotate(15deg); }
+}
+.bot-arm.greeting { animation: greeting-wave 1.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) 1; }
+
+@keyframes processing-panel {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 0.9; }
+}
+.torso-panel > .panel-light.processing { animation: processing-panel 0.4s ease-in-out infinite alternate; }
+
+@keyframes smile {
+    0%, 100% { height: 5px; border-radius: 3px; background-color: #666; }
+    50% { height: 10px; border-radius: 3px 3px 8px 8px; background-color: #f0f0f0; }
+}
+.bot-mouth.happy { animation: smile 0.5s ease-in-out 1; }
+
+.bot-head.idle {
+    transition: transform 0.5s ease-out;
+    transform: translateX(-50%) rotateX(0) rotateZ(0);
+}
+.bot-arm.idle {
+    transition: transform 0.5s ease-out;
+}
